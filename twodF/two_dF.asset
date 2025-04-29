@@ -1,0 +1,72 @@
+--local textures = asset.resource({
+--  Name = "Open Clusters Textures",
+--  Type = "HttpSynchronization",
+--  Identifier = "digitaluniverse_twodF_textures", -- points to location note this file is in lua VSCode will recognize 
+--  Version = 1
+--})
+
+
+local csv = asset.resource("2df.csv") --these are the new locations 
+local cmap = asset.resource("2df.cmap") --these are the new locations 
+local texture_file = asset.resource("point3A.png")
+
+
+
+local Object = {
+  Identifier = "2dF_ally",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    Enabled = false,
+    Opacity = 1.0,
+    File = csv,
+    Unit = "Mpc",
+    Texture = {
+      File = texture_file, -- needs to point locally
+    },
+    Coloring = {
+      ColorMapping = {
+        File = cmap, -- local file
+        ParameterOptions = {
+          { Key = "num_nearby_galaxies", Range = { 1.0, 25.0 } },
+          { Key = "redshift", Range = { 0.0, 0.075 } }
+        }
+      }
+    },
+    SizeSettings = {
+      ScaleExponent = 22.6,
+      MaxSize = 0.2,
+      EnableMaxSizeControl = true
+    }
+  },
+  GUI = {
+    Name = "2dF Galaxies- ally",
+    Path = "/Universe/Deep Sky Surveys",
+    Description = [[The Two-degree Field (2dF) Survey was a project designed to map
+      portions of the extragalactic universe. The 2dF survey has three main components:
+      the North Galactic Pole strip, the South Galactic Pole strip, and the random fields
+      that surround the South Galactic Pole strip. Colors: Orange galaxies show dense
+      regions of galaxies, aqua galaxies are areas of intermediate density, and green
+      galaxies are areas of lower density. Census: 229,293 galaxies.]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+
+asset.meta = {
+  Name = "2dF Galaxies",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott (AMNH), Eric Gawiser (Rutgers U)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

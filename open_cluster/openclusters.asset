@@ -1,0 +1,62 @@
+
+local csv = asset.resource("oc.csv") 
+local texture_file = asset.resource("point4.png")
+
+local Object = {
+  Identifier = "OpenStarClusters_ally", -- needs to be unique
+  Renderable = {
+    Type = "RenderablePolygonCloud", --new renderable will work for most sets not stars
+    Enabled = false, -- off by defualt when starting openspace
+    DataMapping = {
+      Name = "label" },
+    Labels = {
+      Color = { 0.0, 0.36, 0.14 },
+      Size = 15.5,
+      MinMaxSize = { 4, 30 },
+      Unit = "pc"
+    },
+    Coloring = {
+      FixedColor = { 0.13, 0.99, 0.50 }
+    },
+    Opacity = 0.9,
+    File = csv, -- change to what is defined above
+    Unit = "pc",
+    PolygonSides = 12,
+    SizeSettings = {
+      ScaleExponent = 17.8,
+      MaxSize = 23.0,
+      EnableMaxSizeControl = true
+    }
+  },
+  GUI = {
+    Name = "Open Star Clusters -ally", -- change name so ik which mine is 
+    Path = "/Milky Way/Star Clusters", -- where it appears in openspace
+    Description = [[An open star cluster is a loose assemblage of stars numbering from
+      hundreds to thousands that are bound by their mutual gravitation. Because these are
+      young stars, we expect to see them in the star-forming regions of our Galaxy, namely
+      in the spiral arms. For this reason, open clusters exist, for the most part, in the
+      plane of the Galaxy and indicate relatively recent star formation. Census: 1,867 star
+      clusters.]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+
+asset.meta = {
+  Name = "Open Star Clusters",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

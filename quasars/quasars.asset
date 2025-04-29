@@ -1,0 +1,66 @@
+
+
+local csv = asset.resource("qso.csv") --these are the new locations 
+local cmap_viridis = asset.resource("viridis.cmap") --these are the new locations 
+local texture = asset.resource("point3A.png")
+
+local Object = {
+  Identifier = "Quasars_ally",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    Enabled = false,
+    Opacity = 0.95,
+    File = csv,
+    Texture = {
+      File = texture,
+    },
+    Unit = "Mpc",
+    Fading = {
+      FadeInDistances = { 1000.0, 10000.0 } -- Fade in value in the same unit as "Unit"
+    },
+    Coloring = {
+      FixedColor = { 0.85, 0.35, 0.18 },
+      ColorMapping = {
+        Enabled = false,
+        File = cmap_viridis,
+        ParameterOptions = {
+          { Key = "lookback_time", Range = { 1.4, 13.0 } }
+        }
+      }
+    },
+    SizeSettings = {
+      ScaleExponent = 23.5,
+      MaxSize = 0.3,
+      EnableMaxSizeControl = true
+    }
+  },
+  GUI = {
+    Name = "Quasars-ally",
+    Path = "/Universe/Deep Sky Surveys",
+    Description = [[Quasars are the most distant objects we see. They are extremely
+      active galaxies that contain supermassive black holes which gobble up material at a
+      furious rate. As the material falls into the black hole, it forms a disk and emits
+      high-energy light that we see to great distances. Census: 755,850 quasars.]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+
+asset.meta = {
+  Name = "Quasars",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Sohum Udani (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

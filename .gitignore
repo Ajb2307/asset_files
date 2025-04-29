@@ -1,0 +1,28 @@
+# gitignore for asset files
+
+# ignore speck, label, csv, pdf, cmap files
+*.speck
+*.label
+*.dat
+*.cmap
+*.csv
+*.png
+
+
+
+# Documentation build files
+docs/build/
+
+
+# python supplement files
+**__pycache__/
+**.ipynb_checkpoints/
+.vscode/
+
+# Environment
+.venv/
+
+
+# Other OS-generated files
+.DS_Store
+Thumb

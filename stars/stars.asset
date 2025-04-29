@@ -1,0 +1,72 @@
+local speck = asset.resource("stars.speck") 
+local glare = asset.resource("glare.png")
+local halo = asset.resource("halo.png")
+local cmap_bv = asset.resource("colorbv.cmap")
+local cmap_viridis = asset.resource("viridis.cmap")
+
+
+local Stars = {
+  Identifier = "Stars_ally",
+  Renderable = {
+    Type = "RenderableStars",
+    File = speck,
+    Core = {
+      Texture = glare,
+      Multiplier = 15.0,
+      Gamma = 1.66,
+      Scale = 0.18
+    },
+    Glare = {
+      Texture = halo,
+      Multiplier = 0.65
+    },
+    MagnitudeExponent = 6.325,
+    ColorMap = cmap_bv,
+    OtherDataColorMap = cmap_viridis,
+    SizeComposition = "Distance Modulus",
+    DataMapping = {
+      Bv = "colorb_v",
+      Luminance = "lum",
+      AbsoluteMagnitude = "absmag",
+      ApparentMagnitude = "appmag",
+      Vx = "vx",
+      Vy = "vy",
+      Vz = "vz",
+      Speed = "speed"
+    },
+    DimInAtmosphere = true
+  },
+  Tag = { "daytime_hidden" },
+  GUI = {
+    Name = "Stars -ally",
+    Path = "/Milky Way/Stars",
+    Description = [[These are the nearby stars that surround the Sun and are close enough
+      to get accurate distances. These include all the stars we see with the unaided eye
+      and many stars dimmer than that. Over the entire night sky, all year round, and in
+      the northern and southern hemispheres, we can see roughly 9,000 stars total with
+      the unaided eye. Stars are the light factories of the universe, and come in a
+      variety of sizes, colors, and brightnesses. The base catalog is Hipparcos, with Gaia
+      DR3 data applied for distance and velocity when available. Census: 112,746 stars.]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Stars)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Stars)
+end)
+
+asset.export(Stars)
+
+
+
+asset.meta = {
+  Name = "Stars",
+  Description = Stars.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves, Andrew Ayala, Jackie Faherty (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

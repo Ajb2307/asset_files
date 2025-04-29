@@ -1,0 +1,72 @@
+local csv = asset.resource("ob.csv") 
+local texture_file = asset.resource("point4.png")
+local cmap = asset.resource("ob.cmap") 
+
+
+local Object = {
+  Identifier = "OBAssociations_ally",
+  Renderable = {
+    Type = "RenderablePolygonCloud",
+    Enabled = false,
+    Labels = {
+      Color = { 0.4, 0.5, 1.0 },
+      Size = 16.24,
+      MinMaxSize = { 4, 25 },
+      Unit = "pc"
+    },
+    Coloring = {
+      ColorMapping = {
+        File = cmap,
+        ParameterOptions = {
+          { Key = "armID" }
+        }
+      }
+    },
+    Opacity = 0.7,
+    File = csv,
+    DataMapping = {
+      Name = "label" },
+    Unit = "pc",
+    PolygonSides = 7,
+    SizeSettings = {
+      SizeMapping = {
+        ParameterOptions = { "diameter" }
+      },
+      ScaleExponent = 16.9,
+      MaxSize = 17,
+      EnableMaxSizeControl = true
+    }
+  },
+  GUI = {
+    Name = "OB Associations-ally",
+    Path = "/Milky Way/Star Clusters",
+    Description = [[Stellar associations are loose agglomerations of stars that form from
+      the same gas cloud. OB associations typically have on the order of dozens of O and
+      B stars in them (hotter, massive, younger stars) in addition to cooler stars. Over
+      time the stars dispurse and the association is less concentrated. These associations
+      track relatviey recent star formation. Colors: Blue trace the Sagittarius Arm,
+      Purple are in the local Orion Spur, and Orange are in the Perseus Arm. Census: 61 OB
+      associations.]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+
+asset.meta = {
+  Name = "OB Associations",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

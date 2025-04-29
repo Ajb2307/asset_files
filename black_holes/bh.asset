@@ -1,0 +1,51 @@
+
+
+local csv = asset.resource("bh.csv")
+local texture_file = asset.resource("point4.png")
+
+local Object = {
+  Identifier = "BlackHole_ally",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    Enabled = false,
+    File = csv,
+    Texture = {
+      File = texture_file,
+    },
+    Unit = "pc",
+    Coloring = {
+      FixedColor = { 0.3, 0.15, 0.9 },
+    },
+    SizeSettings = {
+      ScaleExponent = 15.5,
+      MaxSize = 0.7,
+      EnableMaxSizeControl = true
+    }
+  },
+  GUI = {
+    Name = "Black Hole- ally",
+    Path = "/Milky Way/Stellar Remnants",
+    Description = [[BlackCAT: A catalogue of stellar-mass black holes in X-ray transients]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+
+asset.meta = {
+  Name = "White Dwarfs",
+  Description = Object.GUI.Description,
+  Author = "Zack Reeves, Brian Abbott (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

@@ -1,0 +1,62 @@
+local csv = asset.resource("expl.csv") 
+local texture = asset.resource("target-blue.png")
+
+local Object = {
+  Identifier = "Exoplanets_ally",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    Enabled = false,
+    File = csv,
+    Labels = {
+      Color = { 0.3, 0.3, 0.8 },
+      Size = 13.75,
+      MinMaxSize = { 10, 100 },
+      Unit = "pc"
+    },
+    DataMapping = {
+      Name = "label" },
+    Opacity = 1.0,
+    Texture = {
+      File = texture,
+    },
+    Unit = "pc",
+    SizeSettings = {
+      ScaleExponent = 16.9,
+      MaxSize = 2.8,
+      EnableMaxSizeControl = true
+    }
+  },
+  GUI = {
+    Name = "Exoplanets-ally",
+    Path = "/Milky Way/Exoplanets",
+    Description = [[Extrasolar planets, or exoplanets, are a relatively new phenomenon in
+      astronomy - no observational evidence was available until 1995. To the eye,
+      exoplanets are lost in the glare of their host star. Unconventional techniques are
+      required to infer or observe them. Here, exoplanet systems are represented by a blue
+      ring centered on each host star. The ring is not intended to signify an orbit, but
+      serve only as a marker. The labels list the host star name, and if there is more
+      than one planet, will list the number of planets in parentheses. Census: 5,589
+      planets in 4,139 systems.]]
+  }
+}
+
+
+asset.onInitialize(function()
+  openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+  openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+
+asset.meta = {
+  Name = "Exoplanets",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}
