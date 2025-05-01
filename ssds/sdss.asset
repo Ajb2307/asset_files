@@ -1,69 +1,68 @@
+-- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
 
+-- Set some parameters for OpenSpace settings
 local csv = asset.resource("sdss.csv")
-local texture_file = asset.resource("point3A.png")
-local cmap = asset.resource("SDSSgals.cmap") --these are the new locations 
+local texture = asset.resource("point3A.png")
+local cmap = asset.resource("SDSSgals.cmap")
 
 local Object = {
-  Identifier = "SloanDigitalSkySurvey_ally",
+  Identifier = "SloanDigitalSkySurvey_test",
   Renderable = {
     Type = "RenderablePointCloud",
-    Enabled = false,
-    Opacity = 0.8,
     File = csv,
+    Unit = "Mpc",
+    Enabled = true,
+    Opacity = 0.8,
     Coloring = {
-      FixedColor = { 0.8, 0.8, 1.0 },
+      FixedColor = {0.8, 0.8, 1.0},
       ColorMapping = {
         File = cmap,
+        Enabled = true,
         ParameterOptions = {
-          { Key = "num_nearby_galaxies", Range = { 1.0, 25.0 } }
+          { Key = "num_nearby_galaxies", Range = {1.0, 25.0} }
         }
       }
     },
     Texture = {
-      File = texture_file,
-    },
-    Unit = "Mpc",
-    Fading = {
-      FadeInDistances = { 220.0, 650.0 } -- Fade in value in the same unit as "Unit"
-    },
+      File = texture
+        },
     SizeSettings = {
       ScaleExponent = 22.6,
       MaxSize = 0.15,
       EnableMaxSizeControl = true
-    }
+     },
   },
   GUI = {
-    Name = "Sloan Digital Sky Survey -ally",
+    Name = "Sloan Digital Sky Survey -test",
     Path = "/Universe/Deep Sky Surveys",
     Description = [[The Sloan Digital Sky Survey (SDSS) is an ambitious project to image
-      about 35% of the sky, deep into the universe. The SDSS galaxies form triangular
-      wedges, revealing those parts of the sky observed by the telescope. If the entire
-      sky were covered, you would see a spherical distribution of galaxies surrounding
-      the Milky Way. With only 35% of the entire sky observed, we see only a few select
-      slices or larger wedgelike portions from that sphere. The weblike cosmic structure
-      is echoed in these data, with orange clusters standing out among the less dense
-      aqua-colored galaxies and the less dense regions of green-colored galaxies.
-      Census: 2,862,767 galaxies.]]
+        about 35% of the sky, deep into the universe. The SDSS galaxies form triangular
+        wedges, revealing those parts of the sky observed by the telescope. If the entire
+        sky were covered, you would see a spherical distribution of galaxies surrounding
+        the Milky Way. With only 35% of the entire sky observed, we see only a few select
+        slices or larger wedgelike portions from that sphere. The weblike cosmic structure
+        is echoed in these data, with orange clusters standing out among the less dense
+        aqua-colored galaxies and the less dense regions of green-colored galaxies.
+        Census: 2,862,767 galaxies.]]
   }
 }
 
-
 asset.onInitialize(function()
-  openspace.addSceneGraphNode(Object)
+    openspace.addSceneGraphNode(Object)
 end)
 
 asset.onDeinitialize(function()
-  openspace.removeSceneGraphNode(Object)
+    openspace.removeSceneGraphNode(Object)
 end)
 
 asset.export(Object)
 
 
-
 asset.meta = {
   Name = "Sloan Digital Sky Survey Galaxies",
   Description = Object.GUI.Description,
-  Author = "Brian Abbott, Zack Reeves (AMNH), Eric Gawiser (Rutgers)",
+  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH), Eric Gawiser (Rutgers)",
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }
+

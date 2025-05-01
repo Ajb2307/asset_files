@@ -1,0 +1,58 @@
+-- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local csv = asset.resource("wd.csv")
+local texture = asset.resource("point3.png")
+
+local Object = {
+  Identifier = "WhiteDwarfs_test",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    File = csv,
+    Unit = "pc",
+    Enabled = false,
+    Opacity = 0.8,
+    Coloring = {
+      FixedColor = {1.0, 1.0, 1.0}
+    },
+    Texture = {
+      File = texture
+        },
+    SizeSettings = {
+      ScaleExponent = 15.5,
+      MaxSize = 0.7,
+      EnableMaxSizeControl = true
+     },
+  },
+  GUI = {
+    Name = "White Dwarfs- test",
+    Path = "/Milky Way/Stellar Remnants",
+    Description = [[A white dwarf is the core of a dying star. These are dim objects that
+        are roughly the size of Earth but with the density of a sun-like star. Stars that are
+        not massive enough to end in a neutron star or black hole will evolve into a white
+        dwarf. This is the ultimate fate of over 95% of the stars in our Galaxy. As the
+        star is dying, the outer layers will expand out and the gas will glow and become a
+        planetary nebula, while the core of the star transforms into a white dwarf. Census:
+        192,613 white dwarfs.]]
+  }
+}
+
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "White Dwarfs",
+  Description = Object.GUI.Description,
+  Author = "Zack Reeves, Brian Abbott, Ally Baldelli (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}
+

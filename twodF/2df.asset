@@ -1,12 +1,12 @@
 -- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
 
 -- Set some parameters for OpenSpace settings
-local csv = asset.resource("6df.csv")
+local csv = asset.resource("2df.csv")
 local texture = asset.resource("point3A.png")
-local cmap = asset.resource("6df.cmap")
+local cmap = asset.resource("2df.cmap")
 
 local Object = {
-  Identifier = "6dF_test",
+  Identifier = "2dF_test",
   Renderable = {
     Type = "RenderablePointCloud",
     File = csv,
@@ -14,12 +14,12 @@ local Object = {
     Enabled = false,
     Opacity = 1.0,
     Coloring = {
-      FixedColor = {1.0, 1.0, 0.0},
+      FixedColor = {1.0, 1.0, 1.0},
       ColorMapping = {
         File = cmap,
         Enabled = true,
         ParameterOptions = {
-          { Key = "num_nearby_galaxies", Range = {1.0, 10.0} },
+          { Key = "num_nearby_galaxies", Range = {1.0, 25.0} },
           { Key = "redshift", Range = {0.0, 0.075} }
         }
       }
@@ -28,20 +28,20 @@ local Object = {
       File = texture
         },
     SizeSettings = {
-      ScaleExponent = 22.5,
+      ScaleExponent = 22.6,
       MaxSize = 0.2,
       EnableMaxSizeControl = true
      },
   },
   GUI = {
-    Name = "6dF Galaxies -test",
+    Name = "2dF Galaxies -test",
     Path = "/Universe/Deep Sky Surveys",
-    Description = [[The Six-degree Field (6dF) Galaxy Survey mapped nearly half the sky
-        from the Anglo-Australian Observatory. Because it's a southern hemisphere survey,
-        there is no coverage in these data for the northern hemisphere's sky. As with all
-        galaxy surveys, the orange galaxies are in relatively dense areas, the green
-        galaxies are in relatively sparse areas, and the aqua galaxies are between. Census:
-        109,569 galaxies.]]
+    Description = [[The Two-degree Field (2dF) Survey was a project designed to map 
+        portions of the extragalactic universe. The 2dF survey has three main components: 
+        the North Galactic Pole strip, the South Galactic Pole strip, and the random fields
+        that surround the South Galactic Pole strip. Colors: Orange galaxies show dense 
+        regions of galaxies, aqua galaxies are areas of intermediate density, and green
+        galaxies are areas of lower density. Census: 229,293 galaxies.]]
   }
 }
 
@@ -57,9 +57,9 @@ asset.export(Object)
 
 
 asset.meta = {
-  Name = "6dF Galaxies",
+  Name = "2dF Galaxies",
   Description = Object.GUI.Description,
-  Author = "Brian Abbott, Ally Baldelli (AMNH)",
+  Author = "Brian Abbott (AMNH), Eric Gawiser (Rutgers U), Ally Baldelli (AMNH)",
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }

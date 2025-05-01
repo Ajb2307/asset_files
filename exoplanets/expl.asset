@@ -1,0 +1,64 @@
+-- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local csv = asset.resource("expl.csv")
+local texture = asset.resource("target-blue.png")
+
+local Object = {
+  Identifier = "Exoplanets_test",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    File = csv,
+    Unit = "pc",
+    Enabled = false,
+    Opacity = 1.0,
+    Texture = {
+      File = texture
+        },
+    SizeSettings = {
+      ScaleExponent = 16.9,
+      MaxSize = 2.8,
+      EnableMaxSizeControl = true
+     },
+    DataMapping = {
+      Name = "label" },
+    Labels = {
+      Color = { 0.3, 0.3, 0.8 },
+      Size = 13.75,
+      MinMaxSize = { 10, 100 },
+      Unit = "pc"
+    }
+  },
+  GUI = {
+    Name = "Exoplanets-test",
+    Path = "/Milky Way/Exoplanets",
+    Description = [[Extrasolar planets, or exoplanets, are a relatively new phenomenon in
+        astronomy - no observational evidence was available until 1995. To the eye,
+        exoplanets are lost in the glare of their host star. Unconventional techniques are
+        required to infer or observe them. Here, exoplanet systems are represented by a blue
+        ring centered on each host star. The ring is not intended to signify an orbit, but
+        serve only as a marker. The labels list the host star name, and if there is more
+        than one planet, will list the number of planets in parentheses. Census: 5,589
+        planets in 4,139 systems.]]
+  }
+}
+
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "Exoplanets",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}
+
