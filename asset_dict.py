@@ -176,7 +176,7 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "open_cluster",
         "data_file": "oc.csv",
-        "texture": "point4.png",
+        "PolygonSides": "12"
         "cmap": None,  # No colormap specified in the asset file
         "Unit": "pc",
         "identifier": "OpenStarClusters_test",

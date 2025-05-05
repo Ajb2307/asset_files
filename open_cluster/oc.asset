@@ -1,0 +1,12 @@
+-- This file is auto-generated in the make_RenderablePolygonCloud_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local data_file = asset.resource("oc.csv")
+local texture = asset.resource("point4.png")
+
+local Object = {
+  Identifier = "OpenStarClusters_test",
+  Renderable = {
+    Type = "RenderablePolygonCloud",
+    File = data_file,
+    Unit = "pc",

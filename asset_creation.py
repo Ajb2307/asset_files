@@ -110,7 +110,7 @@ def set_label_parameters(datainfo):
             # this is used for star labels
             if datainfo.get("LabelEnabled") == True:
                 print('      Enabled = true,')
-                
+
             print('      Color = { ' + datainfo["LabelColor"] + ' },')
             print('      Size = ' + datainfo["LabelSize"] + ',')
             print('      MinMaxSize = { ' + datainfo["LabelMinMaxSize"] + ' },')

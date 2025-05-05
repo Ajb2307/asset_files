@@ -1,4 +1,4 @@
--- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
+-- This file is auto-generated in the make_RenderablePointCloud_asset() function inside asset_creation.py
 
 -- Set some parameters for OpenSpace settings
 local data_file = asset.resource("wd.csv")
