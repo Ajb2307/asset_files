@@ -1,0 +1,55 @@
+-- This file is auto-generated in the make_star_labels_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local data_file = asset.resource("stars_labels.csv")
+
+local Object = {
+  Identifier = "StarLabelsAlternate_test",
+  Renderable = {
+    File = data_file,
+    Type = "RenderablePointCloud",
+    Enabled = false,
+    Opacity = 0.65,
+    Unit = "pc",
+    SizeSettings = {
+      ScaleExponent = 0,
+      MaxSize = 0,
+      EnableMaxSizeControl = false
+     },
+    DataMapping = {
+      Name = "alt_label" },
+    Labels = {
+      Color = { 0.4, 0.4, 0.4 },
+      Size = 14.4,
+      MinMaxSize = { 15, 20 },
+      Unit = "pc"
+    }
+  },
+  GUI = {
+    Name = "Stars Labels - Alternate -test",
+    Path = "/Milky Way/Stars",
+    Description = [[Alternate star labels for the stars. Priority goes to Bayer IDs
+        (Greek designations, like Alpha Orionis), then to Flamsteed numbers (like 1
+        Orionis).]]
+  }
+
+}
+
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "Alternative Labels for the Stars",
+  Description = Object.GUI.Description,
+  Author = "Zack Reeves, Brian Abbott, Ally Baldelli (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

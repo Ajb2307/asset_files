@@ -1,23 +1,22 @@
 -- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
 
 -- Set some parameters for OpenSpace settings
-local csv = asset.resource("wd.csv")
+local data_file = asset.resource("wd.csv")
 local texture = asset.resource("point3.png")
 
 local Object = {
   Identifier = "WhiteDwarfs_test",
   Renderable = {
     Type = "RenderablePointCloud",
-    File = csv,
+    File = data_file,
     Unit = "pc",
     Enabled = false,
-    Opacity = 0.8,
     Coloring = {
       FixedColor = {1.0, 1.0, 1.0}
     },
+    Opacity = 1.0,
     Texture = {
-      File = texture
-        },
+      File = texture },
     SizeSettings = {
       ScaleExponent = 15.5,
       MaxSize = 0.7,
@@ -35,6 +34,7 @@ local Object = {
         planetary nebula, while the core of the star transforms into a white dwarf. Census:
         192,613 white dwarfs.]]
   }
+
 }
 
 asset.onInitialize(function()
@@ -55,4 +55,3 @@ asset.meta = {
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }
-

@@ -18,7 +18,7 @@ local Object = {
     },  
     Texture = {
       File = texture_file
-    },
+      },
     Unit = "pc",
     Coloring = {
       FixedColor = { 0.4, 0.0, 0.1 },
@@ -33,8 +33,8 @@ local Object = {
       ScaleExponent = 15.8,
       MaxSize = 0.7,
       EnableMaxSizeControl = true
-    }
-  },
+      }
+    },
   GUI = {
     Name = "Brown Dwarfs -ally",
     Path = "/Milky Way/Substellar Objects",

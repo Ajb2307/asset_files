@@ -1,7 +1,7 @@
 -- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
 
 -- Set some parameters for OpenSpace settings
-local csv = asset.resource("6df.csv")
+local data_file = asset.resource("6df.csv")
 local texture = asset.resource("point3A.png")
 local cmap = asset.resource("6df.cmap")
 
@@ -9,10 +9,9 @@ local Object = {
   Identifier = "6dF_test",
   Renderable = {
     Type = "RenderablePointCloud",
-    File = csv,
+    File = data_file,
     Unit = "Mpc",
     Enabled = false,
-    Opacity = 1.0,
     Coloring = {
       FixedColor = {1.0, 1.0, 0.0},
       ColorMapping = {
@@ -24,9 +23,9 @@ local Object = {
         }
       }
     },
+    Opacity = 1.0,
     Texture = {
-      File = texture
-        },
+      File = texture },
     SizeSettings = {
       ScaleExponent = 22.5,
       MaxSize = 0.2,
@@ -43,6 +42,7 @@ local Object = {
         galaxies are in relatively sparse areas, and the aqua galaxies are between. Census:
         109,569 galaxies.]]
   }
+
 }
 
 asset.onInitialize(function()
@@ -63,4 +63,3 @@ asset.meta = {
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }
-

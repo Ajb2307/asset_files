@@ -1,7 +1,7 @@
 -- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
 
 -- Set some parameters for OpenSpace settings
-local csv = asset.resource("bd.csv")
+local data_file = asset.resource("bd.csv")
 local texture = asset.resource("point3.png")
 local cmap = asset.resource("bd.cmap")
 
@@ -9,10 +9,9 @@ local Object = {
   Identifier = "BrownDwarfs_test",
   Renderable = {
     Type = "RenderablePointCloud",
-    File = csv,
+    File = data_file,
     Unit = "pc",
     Enabled = false,
-    Opacity = 1.0,
     Coloring = {
       FixedColor = {0.4, 0.0, 0.1},
       ColorMapping = {
@@ -23,9 +22,9 @@ local Object = {
         }
       }
     },
+    Opacity = 1.0,
     Texture = {
-      File = texture
-        },
+      File = texture },
     SizeSettings = {
       ScaleExponent = 15.8,
       MaxSize = 0.7,
@@ -57,6 +56,7 @@ local Object = {
         for L type objects, Maroon for T type, and purple for Y type objects. Census:
         2,196 objects.]]
   }
+
 }
 
 asset.onInitialize(function()
@@ -77,4 +77,3 @@ asset.meta = {
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }
-

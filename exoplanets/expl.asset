@@ -1,20 +1,19 @@
 -- This file is auto-generated in the make_RPC_asset() function inside asset_creation.py
 
 -- Set some parameters for OpenSpace settings
-local csv = asset.resource("expl.csv")
+local data_file = asset.resource("expl.csv")
 local texture = asset.resource("target-blue.png")
 
 local Object = {
   Identifier = "Exoplanets_test",
   Renderable = {
     Type = "RenderablePointCloud",
-    File = csv,
+    File = data_file,
     Unit = "pc",
     Enabled = false,
     Opacity = 1.0,
     Texture = {
-      File = texture
-        },
+      File = texture },
     SizeSettings = {
       ScaleExponent = 16.9,
       MaxSize = 2.8,
@@ -41,6 +40,7 @@ local Object = {
         than one planet, will list the number of planets in parentheses. Census: 5,589
         planets in 4,139 systems.]]
   }
+
 }
 
 asset.onInitialize(function()
@@ -61,4 +61,3 @@ asset.meta = {
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }
-
