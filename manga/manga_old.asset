@@ -1,52 +1,50 @@
--- This file is auto-generated in the make_RenderablePolygonCloud_asset() function inside asset_creation.py
-
--- Set some parameters for OpenSpace settings
-local data_file = asset.resource("manga.csv")
+local csv = asset.resource("manga.csv") 
 
 local Object = {
-  Identifier = "MaNGA_test",
+  Identifier = "MaNGA_ally",
   Renderable = {
     Type = "RenderablePolygonCloud",
     Enabled = false,
-    File = data_file,
-    Unit = "Mpc",
-    PolygonSides = 5,
     Coloring = {
-      FixedColor = {0.8, 0.8, 0.0}
+      FixedColor = { 0.8, 0.8, 0.0 }
     },
     Opacity = 0.8,
+    File = csv,
+    PolygonSides = 5,
+    Unit = "Mpc",
+    Fading = {
+      FadeInDistances = { 220.0, 650.0 } -- Fade in value in the same unit as "Unit"
+    },
     SizeSettings = {
       ScaleExponent = 22.6,
       MaxSize = 0.15,
       EnableMaxSizeControl = true
-     },
-    Fading = {
-      FadeInDistances = {220.0, 650.0}
-    },
+    }
   },
   GUI = {
-    Name = "MaNGA Nearby Galaxy Catalog -test",
+    Name = "MaNGA Nearby Galaxy Catalog -ally",
     Path = "/Universe/Deep Sky Surveys",
     Description = [[MaNGA Nearby Galaxy Catalog.]]
   }
-
 }
 
+
 asset.onInitialize(function()
-    openspace.addSceneGraphNode(Object)
+  openspace.addSceneGraphNode(Object)
 end)
 
 asset.onDeinitialize(function()
-    openspace.removeSceneGraphNode(Object)
+  openspace.removeSceneGraphNode(Object)
 end)
 
 asset.export(Object)
 
 
+
 asset.meta = {
   Name = "SDSS4 MaNGA",
   Description = Object.GUI.Description,
-  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+  Author = "Brian Abbott, Zack Reeves (AMNH)",
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }

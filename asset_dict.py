@@ -170,37 +170,6 @@ master_dictionary = {
         "meta_name": "White Dwarfs",
         "author": "Zack Reeves, Brian Abbott, Ally Baldelli (AMNH)",
     },
-    'open_clusters': {
-        "renderable": "RenderablePolygonCloud",
-        "filename": "oc",
-        "Enabled": "false",
-        "asset_dir": "open_cluster",
-        "data_file": "oc.csv",
-        "PolygonSides": "12"
-        "cmap": None,  # No colormap specified in the asset file
-        "Unit": "pc",
-        "identifier": "OpenStarClusters_test",
-        "fixed_color": "0.13, 0.99, 0.50",
-        "Opacity": "0.9",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
-        "ScaleExponent": "17.8",
-        "MaxSize": "23.0",
-        "csv_labels": True,
-        "LabelColor": "0.0, 0.36, 0.14",
-        "LabelSize": "15.5",
-        "LabelMinMaxSize": "4, 30",
-        "gui_name": "Open Star Clusters -test",
-        "gui_path": "/Milky Way/Star Clusters",
-        "description": """An open star cluster is a loose assemblage of stars numbering from
-        hundreds to thousands that are bound by their mutual gravitation. Because these are
-        young stars, we expect to see them in the star-forming regions of our Galaxy, namely
-        in the spiral arms. For this reason, open clusters exist, for the most part, in the
-        plane of the Galaxy and indicate relatively recent star formation. Census: 1,867 star
-        clusters.""",
-        "meta_name": "Open Star Clusters",
-        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
-    },
     'exoplanets': {
         "renderable": "RenderablePointCloud",
         "filename": "expl",
@@ -311,6 +280,231 @@ master_dictionary = {
         for more information.""",
         "meta_name": "Star Labels",
         "author": "Zack Reeves, Brian Abbott, Ally Baldelli (AMNH)",
+    },
+    'open_clusters': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "oc",
+        "Enabled": "false",
+        "asset_dir": "open_cluster",
+        "data_file": "oc.csv",
+        "PolygonSides": "12",
+        "cmap": None,  # No colormap specified in the asset file
+        "Unit": "pc",
+        "identifier": "OpenStarClusters_test",
+        "fixed_color": "0.13, 0.99, 0.50",
+        "Opacity": "0.9",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "17.8",
+        "MaxSize": "23.0",
+        "csv_labels": True,
+        "LabelColor": "0.0, 0.36, 0.14",
+        "LabelSize": "15.5",
+        "LabelMinMaxSize": "4, 30",
+        "gui_name": "Open Star Clusters -test",
+        "gui_path": "/Milky Way/Star Clusters",
+        "description": """An open star cluster is a loose assemblage of stars numbering from
+        hundreds to thousands that are bound by their mutual gravitation. Because these are
+        young stars, we expect to see them in the star-forming regions of our Galaxy, namely
+        in the spiral arms. For this reason, open clusters exist, for the most part, in the
+        plane of the Galaxy and indicate relatively recent star formation. Census: 1,867 star
+        clusters.""",
+        "meta_name": "Open Star Clusters",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)"
+    },
+    'pulsars': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "pulsars",
+        "Enabled": "false",
+        "asset_dir": "pulsars",
+        "data_file": "pulsars.csv",
+        "Unit": "pc",
+        "PolygonSides": "4",
+        "Opacity": "1.0",
+        "texture": None,  # No texture specified in the asset file
+        "cmap": None,  # No colormap specified in the asset file
+        "identifier": "Pulsars_test",
+        "fixed_color": "0.7, 0.0, 0.0",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "18.1",
+        "MaxSize": "19.0",
+        "csv_labels": True,
+        "LabelColor": "0.75, 0.21, 0.21",
+        "LabelSize": "15.27",
+        "LabelMinMaxSize": "4, 20",
+        "gui_name": "Pulsars-test",
+        "gui_path": "/Milky Way/Stellar Remnants",
+        "description": """A pulsar is a spinning neutron star, an ultra-dense stellar remnant
+        resulting from a supernova-driven collapse of the stellar core. Upon death, stars
+        leave behind one of three possible remnants: a white dwarf, a neutron star, or a
+        black hole. Stars that are more massive than the sun will often become neutron
+        stars in a violent explosion called a supernova. Pulsars are not pulsing but are
+        spinning neutron stars whose beams of radiation point toward Earth just as a
+        lighthouse sweeps the horizon. Their strong magnetic fields funnel beams of light
+        from its poles. When these beams point to Earth, we see a strong radio signal.
+        Census: 3,221 pulsars.""",
+        "meta_name": "Pulsars",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
+    'supernova_remnants': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "snr",
+        "asset_dir": "supernova_remnants",
+        "Enabled": "false",
+        "data_file": "snr.csv",
+        "Unit": "pc",
+        "PolygonSides": "7",
+        "Opacity": "0.32",
+        "texture": None,  # No texture specified in the asset file
+        "cmap": None,  # No colormap specified in the asset file
+        "identifier": "SupernovaRemnants_test",
+        "fixed_color": "1.0, 0.5, 0.0",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "18.4",
+        "MaxSize": "19.0",
+        "csv_labels": True,
+        "LabelColor": "0.51, 0.40, 0.04",
+        "LabelSize": "16.0",
+        "LabelMinMaxSize": "4, 100",
+        "gui_name": "Supernova Remnants-test",
+        "gui_path": "/Milky Way/Nebulae",
+        "description": """A supernova remnant is the nebulous gas left over from a supernova
+        explosion. This gas expands at great speeds and rams into the surrounding
+        interstellar gas. This excites the surrounding gas and causes it to glow, producing
+        the nebulous cloud we observe from Earth. A supernova remnant contains a neutron
+        star or pulsar at its center, the core of the dying star. The cloud that enshrouds
+        the core does not last long, though. After about 50,000 years, the gas mixes into
+        the interstellar medium and no longer glows. Astronomically, this is a very short
+        time, so the supernova remnants we see must be left from explosions that have
+        occurred recently, cosmically speaking. Census: 112 supernova remnants.""",
+        "meta_name": "Supernova Remnants",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
+    'h2_regions': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "h2",
+        "asset_dir": "h2_regions",
+        "Enabled": "false",
+        "data_file": "h2.csv",
+        "Unit": "pc",
+        "PolygonSides": "6",
+        "Opacity": "0.7",
+        "texture": None,  # No texture specified in the asset file
+        "cmap": None,  # No colormap specified in the asset file
+        "identifier": "HIIRegions_test",
+        "fixed_color": "0.0, 0.5, 1.0",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "18.5",
+        "MaxSize": "8.0",
+        "csv_labels": True,
+        "LabelColor": "0.5, 0.5, 0.5",
+        "LabelSize": "16.24",
+        "LabelMinMaxSize": "4, 20",
+        "gui_name": "HII Regions -test",
+        "gui_path": "/Milky Way/Nebulae",
+        "description": """HII (pronounced "H-two") regions are stellar nurseries for newborn
+        stars. Stars are born from condensing clouds of hydrogen gas. As these clouds
+        condense, the densities become high enough to form stars. An HII region is the
+        surrounding clouds of hydrogen that glow from the stars born within them. The
+        result is a bright, glowing nebula which is seen to great distances. One local
+        celebrity among HII regions is the Orion Nebula (M42). These star-forming regions
+        lie in the plane of the Galaxy because that is where star formation occurs in
+        spiral galaxies such as our Milky Way. Because of this, they are great tracers of
+        the spiral arms of the Galaxy. Census: 1,108 star-forming regions.""",
+        "meta_name": "HII Regions",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
+    'ob_associations': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "ob",
+        "Enabled": "false",
+        "asset_dir": "ob_association",
+        "data_file": "ob.csv",
+        "PolygonSides": "7",
+        "cmap": "ob.cmap",
+        "Unit": "pc",
+        "identifier": "OBAssociations_test",
+        "fixed_color": None,  # No fixed color specified in the asset file
+        "Opacity": "0.7",
+        "colormap_enabled": "true",
+        "parameter_options": [{"key": "armID", "range": "1.0, 3.0"}],
+        "ScaleExponent": "16.9",
+        "MaxSize": "17",
+        "SizeMapping_ParameterOptions": "diameter",
+        "csv_labels": True,
+        "LabelColor": "0.4, 0.5, 1.0",
+        "LabelSize": "16.24",
+        "LabelMinMaxSize": "4, 25",
+        "gui_name": "OB Associations-test",
+        "gui_path": "/Milky Way/Star Clusters",
+        "description": """Stellar associations are loose agglomerations of stars that form from
+        the same gas cloud. OB associations typically have on the order of dozens of O and
+        B stars in them (hotter, massive, younger stars) in addition to cooler stars. Over
+        time the stars disperse and the association is less concentrated. These associations
+        track relatively recent star formation. Colors: Blue trace the Sagittarius Arm,
+        Purple are in the local Orion Spur, and Orange are in the Perseus Arm. Census: 61 OB
+        associations.""",
+        "meta_name": "OB Associations",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
+    'globular_clusters': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "gc",
+        "Enabled": "false",
+        "asset_dir": "globular_clusters",
+        "data_file": "gc.csv",
+        "PolygonSides": "5",
+        "cmap": None,  # No colormap specified in the asset file
+        "Unit": "pc",
+        "identifier": "GlobularClusters_test",
+        "fixed_color": "0.8, 0.8, 0.0",
+        "Opacity": "0.65",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "18.6",
+        "MaxSize": "13.0",
+        "csv_labels": True,
+        "LabelColor": "0.36, 0.36, 0.0",
+        "LabelSize": "16.7",
+        "LabelMinMaxSize": "4, 20",
+        "gui_name": "Globular Clusters-test",
+        "gui_path": "/Milky Way/Star Clusters",
+        "description": """Globular star clusters are gravitationally bound groups of 100,000
+        to 1 million stars. They are compact, spherical "balls" of stars with very high
+        stellar densities. These clusters are typically 30 to 100 light years in diameter.
+        Census: 161 globular clusters.""",
+        "meta_name": "Globular Clusters",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
+    'manga': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "manga",
+        "Enabled": "false",
+        "asset_dir": "manga",
+        "data_file": "manga.csv",
+        "PolygonSides": "5",
+        "cmap": None,  # No colormap specified in the asset file
+        "Unit": "Mpc",
+        "identifier": "MaNGA_test",
+        "fixed_color": "0.8, 0.8, 0.0",
+        "Opacity": "0.8",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "22.6",
+        "MaxSize": "0.15",
+        "FadeInDistances": "220.0, 650.0",
+        "csv_labels": False,  # No labels specified in the asset file
+        "LabelColor": None,
+        "LabelSize": None,
+        "LabelMinMaxSize": None,
+        "gui_name": "MaNGA Nearby Galaxy Catalog -test",
+        "gui_path": "/Universe/Deep Sky Surveys",
+        "description": """MaNGA Nearby Galaxy Catalog.""",
+        "meta_name": "SDSS4 MaNGA",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
     },
 }
 

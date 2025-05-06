@@ -79,6 +79,10 @@ def set_color_parameters(datainfo):
 def set_size_parameters(datainfo):
     try:
         print('    SizeSettings = {') 
+        if datainfo.get("SizeMapping_ParameterOptions") != None:
+            print('      SizeMapping = {')
+            print('        ParameterOptions = { "' + datainfo["SizeMapping_ParameterOptions"] + '" }')
+            print('        },')
         print('      ScaleExponent = ' + datainfo["ScaleExponent"] + ',') 
         print('      MaxSize = ' + datainfo["MaxSize"] + ',')
         print('      EnableMaxSizeControl = true')
@@ -347,18 +351,16 @@ def make_RenderablePolygonCloud_asset(datainfo):
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    Type = "RenderablePolygonCloud",')
+        print('    Enabled = ' + datainfo["Enabled"] + ',')
         
         # input file settings
         print('    File = data_file,')
         print('    Unit = "' + datainfo["Unit"] + '",')
         print('    PolygonSides = ' + datainfo["PolygonSides"] + ',')
-        print('    Enabled = ' + datainfo["Enabled"] + ',')
         
         # color, opacity, texture, size settings
         set_color_parameters(datainfo)
-        ## input texture settings
-        print('    Texture = {')
-        print('      File = texture },')
+
         ## size settings
         set_size_parameters(datainfo)
         ## fading settings
