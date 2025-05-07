@@ -9,7 +9,7 @@ local Object = {
     Type = "RenderablePolygonCloud",
     Enabled = false,
     File = data_file,
-    Unit = "pc",
+    Unit = "Kpc",
     PolygonSides = 4,
     Coloring = {
       FixedColor = {0.7, 0.0, 0.0}
@@ -26,7 +26,7 @@ local Object = {
       Color = { 0.75, 0.21, 0.21 },
       Size = 15.27,
       MinMaxSize = { 4, 20 },
-      Unit = "pc"
+      Unit = "Kpc"
     }
   },
   GUI = {

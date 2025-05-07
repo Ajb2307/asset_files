@@ -17,7 +17,7 @@ local Object = {
       EnableMaxSizeControl = false
      },
     DataMapping = {
-      Name = "alt_label" },
+      Name = "label" },
     Labels = {
       Enabled = true,
       Color = { 0.4, 0.4, 0.4 },

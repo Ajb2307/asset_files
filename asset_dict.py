@@ -318,7 +318,7 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "pulsars",
         "data_file": "pulsars.csv",
-        "Unit": "pc",
+        "Unit": "Kpc",
         "PolygonSides": "4",
         "Opacity": "1.0",
         "texture": None,  # No texture specified in the asset file
@@ -506,6 +506,37 @@ master_dictionary = {
         "meta_name": "SDSS4 MaNGA",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
     },
+    'stars' : {
+        "renderable": "RenderableStars",
+        "filename": "stars",
+        "asset_dir": "stars",
+        "data_file": "stars.speck",
+        "core_texture": "glare.png",
+        "glare_texture": "halo.png",
+        "cmap": "colorbv.cmap",
+        "other_cmap": "viridis.cmap",
+        "identifier": "Stars_test",
+        "Bv_column": "colorb_v",
+        "Luminance_column": "lum",
+        "AbsoluteMagnitude_column": "absmag",
+        "ApparentMagnitude_column": "appmag",
+        "Vx_column": "vx",
+        "Vy_column": "vy",
+        "Vz_column": "vz",
+        "Speed_column": "speed",
+        "gui_name": "Stars -test",
+        "gui_path": "/Milky Way/Stars",
+        "description": """These are the nearby stars that surround the Sun and are close enough
+        to get accurate distances. These include all the stars we see with the unaided eye
+        and many stars dimmer than that. Over the entire night sky, all year round, and in
+        the northern and southern hemispheres, we can see roughly 9,000 stars total with
+        the unaided eye. Stars are the light factories of the universe, and come in a
+        variety of sizes, colors, and brightnesses. The base catalog is Hipparcos, with Gaia
+        DR3 data applied for distance and velocity when available. Census: 112,746 stars.""",
+        "meta_name": "Stars",
+        "author":  "Brian Abbott, Zack Reeves, Andrew Ayala, Jackie Faherty, Ally Baldelli (AMNH)"
+        }
+
 }
 
 def data_info(data_name):

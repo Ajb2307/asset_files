@@ -29,10 +29,9 @@ local Object = {
       ScaleExponent = 16.9,
       MaxSize = 17,
       EnableMaxSizeControl = true
-    },
+     },
     DataMapping = {
-      Name = "label" 
-    },
+      Name = "label" },
     Labels = {
       Color = { 0.4, 0.5, 1.0 },
       Size = 16.24,
