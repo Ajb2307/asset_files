@@ -535,8 +535,98 @@ master_dictionary = {
         DR3 data applied for distance and velocity when available. Census: 112,746 stars.""",
         "meta_name": "Stars",
         "author":  "Brian Abbott, Zack Reeves, Andrew Ayala, Jackie Faherty, Ally Baldelli (AMNH)"
-        }
-
+        },
+    'quasars': {
+        "renderable": "RenderablePointCloud",
+        "filename": "quasars",
+        "Enabled": "true",
+        "asset_dir": "quasars",
+        "data_file": "qso.csv",
+        "texture": "point3A.png",
+        "cmap": "viridis.cmap",
+        "Unit": "Mpc",
+        "identifier": "Quasars_test",
+        "fixed_color": "0.85, 0.35, 0.18",
+        "Opacity": "0.95",
+        "colormap_enabled": "false",
+        "parameter_options": [{"key": "lookback_time", "range": "1.4, 13.0"}],
+        "ScaleExponent": "23.5",
+        "MaxSize": "0.3",
+        "FadeInDistances": "1000.0, 10000.0",
+        "csv_labels": False,  # No labels specified in the asset file
+        "LabelColor": None,
+        "LabelSize": None,
+        "LabelMinMaxSize": None,
+        "gui_name": "Quasars-test",
+        "gui_path": "/Universe/Deep Sky Surveys",
+        "description": """Quasars are the most distant objects we see. They are extremely
+        active galaxies that contain supermassive black holes which gobble up material at a
+        furious rate. As the material falls into the black hole, it forms a disk and emits
+        high-energy light that we see to great distances. Census: 755,850 quasars.""",
+        "meta_name": "Quasars",
+        "author": "Brian Abbott, Sohum Udani, Ally Baldelli (AMNH)",
+    },
+    'black_holes': {
+        "renderable": "RenderablePointCloud",
+        "filename": "bh",
+        "Enabled": "false",
+        "asset_dir": "black_holes",
+        "data_file": "bh.csv",
+        "texture": "point4.png",
+        "cmap": None,  # No colormap specified in the asset file
+        "Unit": "pc",
+        "identifier": "BlackHole_test",
+        "fixed_color": "0.3, 0.15, 0.9",
+        "Opacity": None,  # No opacity specified in the asset file
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "15.5",
+        "MaxSize": "0.7",
+        "csv_labels": False,  # No labels specified in the asset file
+        "LabelColor": None,
+        "LabelSize": None,
+        "LabelMinMaxSize": None,
+        "gui_name": "Black Hole- test",
+        "gui_path": "/Milky Way/Stellar Remnants",
+        "description": """BlackCAT: A catalogue of stellar-mass black holes in X-ray transients""",
+        "meta_name": "Black Holes",
+        "author": "Zack Reeves, Brian Abbott,  Ally Baldelli (AMNH)",
+    },
+    'planetary_nebulae': {
+        "renderable": "RenderablePolygonCloud",
+        "filename": "pn",
+        "Enabled": "false",
+        "asset_dir": "planetary_nebulae",
+        "data_file": "pn.csv",
+        "PolygonSides": "3",
+        "cmap": None,  # No colormap specified in the asset file
+        "Unit": "pc",
+        "identifier": "PlanetaryNebulae_test",
+        "fixed_color": "0.4, 0.4, 0.9",
+        "Opacity": "0.99",
+        "colormap_enabled": "false",
+        "parameter_options": [],  # No parameter options specified in the asset file
+        "ScaleExponent": "18.2",
+        "MaxSize": "19.0",
+        "csv_labels": True,
+        "LabelColor": "0.35, 0.35, 0.60",
+        "LabelSize": "16.24",
+        "LabelMinMaxSize": "4, 25",
+        "gui_name": "Planetary Nebulae -test",
+        "gui_path": "/Milky Way/Nebulae",
+        "description": """A planetary nebula is an expanding shell of gas ejected from an
+        average-sized star late in its life cycle. Appearing like greenish disks to a
+        telescopic observer, planetary nebulae received their name from their resemblance to
+        the gaseous planets of our solar system. In no way are they related to planets,
+        rather, they are products of dying stars. As the gas from the star expands, it
+        sweeps up the cooler gas like a snowplow. The gas glows because of the ultraviolet
+        light from the stellar remnant at the center. Because the planetary nebula phase of
+        a star's evolution is relatively short, we observe only those that have occurred
+        recently in the younger stellar population. Therefore, we expect to see planetary
+        nebulae in the disk of the Galaxy. Census: 1,657 planetary nebulae.""",
+        "meta_name": "Planetary Nebulae",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
 }
 
 def data_info(data_name):

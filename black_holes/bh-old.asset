@@ -1,50 +1,51 @@
--- This file is auto-generated in the make_RenderablePointCloud_asset() function inside asset_creation.py
 
--- Set some parameters for OpenSpace settings
-local data_file = asset.resource("bh.csv")
-local texture = asset.resource("point4.png")
+
+local csv = asset.resource("bh.csv")
+local texture_file = asset.resource("point4.png")
 
 local Object = {
-  Identifier = "BlackHole_test",
+  Identifier = "BlackHole_ally",
   Renderable = {
     Type = "RenderablePointCloud",
-    File = data_file,
-    Unit = "pc",
     Enabled = false,
-    Coloring = {
-      FixedColor = {0.3, 0.15, 0.9}
-    },
+    File = csv,
     Texture = {
-      File = texture },
+      File = texture_file,
+    },
+    Unit = "pc",
+    Coloring = {
+      FixedColor = { 0.3, 0.15, 0.9 },
+    },
     SizeSettings = {
       ScaleExponent = 15.5,
       MaxSize = 0.7,
       EnableMaxSizeControl = true
-     },
+    }
   },
   GUI = {
-    Name = "Black Hole- test",
+    Name = "Black Hole- ally",
     Path = "/Milky Way/Stellar Remnants",
     Description = [[BlackCAT: A catalogue of stellar-mass black holes in X-ray transients]]
   }
-
 }
 
+
 asset.onInitialize(function()
-    openspace.addSceneGraphNode(Object)
+  openspace.addSceneGraphNode(Object)
 end)
 
 asset.onDeinitialize(function()
-    openspace.removeSceneGraphNode(Object)
+  openspace.removeSceneGraphNode(Object)
 end)
 
 asset.export(Object)
 
 
+
 asset.meta = {
   Name = "Black Holes",
   Description = Object.GUI.Description,
-  Author = "Zack Reeves, Brian Abbott,  Ally Baldelli (AMNH)",
+  Author = "Zack Reeves, Brian Abbott (AMNH)",
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }
