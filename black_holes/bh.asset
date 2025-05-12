@@ -27,7 +27,6 @@ local Object = {
     Path = "/Milky Way/Stellar Remnants",
     Description = [[BlackCAT: A catalogue of stellar-mass black holes in X-ray transients]]
   }
-
 }
 
 asset.onInitialize(function()

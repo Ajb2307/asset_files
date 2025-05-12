@@ -42,7 +42,6 @@ local Object = {
         galaxies are in relatively sparse areas, and the aqua galaxies are between. Census:
         109,569 galaxies.]]
   }
-
 }
 
 asset.onInitialize(function()

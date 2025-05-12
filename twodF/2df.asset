@@ -42,7 +42,6 @@ local Object = {
         regions of galaxies, aqua galaxies are areas of intermediate density, and green
         galaxies are areas of lower density. Census: 229,293 galaxies.]]
   }
-
 }
 
 asset.onInitialize(function()

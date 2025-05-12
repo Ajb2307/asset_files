@@ -29,7 +29,6 @@ local Object = {
     Path = "/Universe/Deep Sky Surveys",
     Description = [[MaNGA Nearby Galaxy Catalog.]]
   }
-
 }
 
 asset.onInitialize(function()

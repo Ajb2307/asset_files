@@ -625,6 +625,68 @@ master_dictionary = {
         recently in the younger stellar population. Therefore, we expect to see planetary
         nebulae in the disk of the Galaxy. Census: 1,657 planetary nebulae.""",
         "meta_name": "Planetary Nebulae",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)"
+    },
+    'star_uncertainty': {
+        "renderable": "RenderableConstellationLines",
+        "filename": "stellar_uncertainty",
+        "identifier": "StarUncertainty_test",
+        "Enabled": "false",
+        "asset_dir": "stellar_uncertainty",
+        "data_file": "star_uncertainty.speck",
+        "label_file": "star_uncertainty.label",
+        "dat_file": "star_uncertainty.dat", 
+        "Opacity": "0.8",
+        "LineWidth": "5.0",
+        "LabelColor": "0.6, 0.6, 1.0",
+        "LabelSize": "14.1",
+        "LabelMinMaxSize": "8, 170",
+        "Unit": "pc",
+        "DimInAtmosphere": 'true',
+        "Colors":  "{1.0, 1.0, 0.0}, {0.0, 0.8, 1.0}, {0.957, 0.51, 0.10}", 
+        "gui_name": "Star Distance Uncertainty-test",
+        "gui_path": "/Milky Way/Stars",
+        "description": """The uncertainty of a star's position is derived from the uncertainty
+        in its parallax measurement. This results in a range in distance where the star
+        could exist. Here we draw lines on top of select stars which give us a visual cue
+        of the range in possible distances for that star. Colors: Aqua lines are stars with
+        Gaia geometric parallax measurements (the most accurate), orange lines indicate
+        stars with Hipparcos geometric parallaxes, and yellow lines are stars with Gaia
+        photogeometric parallaxes (the least accurate). The label includes the star name
+        and the length of the uncertainty in light years. Census: 3,440 stars with
+        uncertainty.""",
+        "meta_name": "Star Distance Uncertainty",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+    },
+    'constellations': {
+        "renderable": "RenderableConstellationLines",
+        "identifier": "Constellations_test",
+        "zodiacs": True,
+        "constellation_actions": True,
+        "filename": "constellations",
+        "Enabled": "false",
+        "asset_dir": "constellations",
+        "data_file": "constellation_lines.speck",
+        "label_file": "constellation_lines.label",
+        "dat_file": "constellations.dat",
+        "Opacity": "0.3",
+        "LineWidth": None,  # Not specified in the asset file
+        "csv_labels": False,  # No CSV labels specified in the asset file
+        "LabelColor": "0.8, 0.8, 0.8",
+        "LabelSize": "14.5",
+        "LabelMinMaxSize": "8, 170",
+        "Unit": "pc",
+        "DimInAtmosphere": 'true',
+        "Colors": '{0.6, 0.4, 0.4}, {0.8, 0.0, 0.0}, {0.0, 0.3, 0.8}' ,
+        "gui_name": "Constellation Lines -test",
+        "gui_path": "/Milky Way/Constellations",
+        "description": """Lines connecting the stars that make up the constellation figures.
+        We represent the constellations by connecting the main stars that make up the
+        constellation "stick figures," as seen from Earth. Colors: most constellations
+        are pink, while the zodiacal constellations are red. We also color Orion and Ursa
+        Major blue as two recognizable constellations in the night sky. Census: 88
+        constellations.""",
+        "meta_name": "Constellations",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
     },
 }

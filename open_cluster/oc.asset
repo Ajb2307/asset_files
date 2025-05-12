@@ -39,7 +39,6 @@ local Object = {
         plane of the Galaxy and indicate relatively recent star formation. Census: 1,867 star
         clusters.]]
   }
-
 }
 
 asset.onInitialize(function()

@@ -47,7 +47,6 @@ local Object = {
         aqua-colored galaxies and the less dense regions of green-colored galaxies.
         Census: 2,862,767 galaxies.]]
   }
-
 }
 
 asset.onInitialize(function()

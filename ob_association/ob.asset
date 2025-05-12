@@ -50,7 +50,6 @@ local Object = {
         Purple are in the local Orion Spur, and Orange are in the Perseus Arm. Census: 61 OB
         associations.]]
   }
-
 }
 
 asset.onInitialize(function()

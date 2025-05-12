@@ -32,7 +32,6 @@ local Object = {
     Description = [[Common name labels for nearby stars in the Milky Way. See 'Stars'
         for more information.]]
   }
-
 }
 
 asset.onInitialize(function()

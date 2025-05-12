@@ -1,84 +1,108 @@
-local constellations_helper = asset.require("util/constellations_helper")
+-- This file is auto-generated in the make_RenderablePointCloud_asset() function inside asset_creation.py
 
+-- Set some parameters for OpenSpace settings
+local data_file = asset.resource("constellation_lines.speck")
 local label = asset.resource("constellation_lines.label")
-local speck = asset.resource("constellation_lines.speck")
 local dat = asset.resource("constellations.dat")
 
-
-
+local constellations_helper = asset.require("util/constellations_helper") 
 local zodiacs = {
-  "CNC", "TAU", "PSC", "ARI", "LIB", "AQR", "CAP", "SCO", "VIR", "SGR", "GEM", "LEO"
+"CNC", "TAU", "PSC", "ARI", "LIB", "AQR", "CAP", "SCO", "VIR", "SGR", "GEM", "LEO"
 }
 
 local function zodiacsString(zodiacsList)
-  local zodiacsString = "{"
-  local isFirst = true
+local zodiacsString = "{"
+local isFirst = true
 
-  for k, zodiac in pairs(zodiacsList) do
+for k, zodiac in pairs(zodiacsList) do
     local fullName = constellations_helper.findFullName(zodiac)
     if fullName ~= nil then
-      if isFirst then
+    if isFirst then
         isFirst = false
-      else
+    else
         zodiacsString = zodiacsString .. ", "
-      end
-
-      zodiacsString = zodiacsString .. [["]] .. fullName .. [["]]
     end
-  end
 
-  zodiacsString = zodiacsString .. "}"
-  return zodiacsString
+    zodiacsString = zodiacsString .. [["]] .. fullName .. [["]]
+    end
 end
 
+zodiacsString = zodiacsString .. "}"
+return zodiacsString
+end
 
-local Constellations = {
-  Identifier = "Constellations-ally",
+local Object = {
+  Identifier = "Constellations_test",
   Renderable = {
     Type = "RenderableConstellationLines",
+    File = data_file,
+    NamesFile = dat,
+    Unit = "pc",
     Enabled = false,
+    Colors = { {0.6, 0.4, 0.4}, {0.8, 0.0, 0.0}, {0.0, 0.3, 0.8} },
+    Opacity = 0.3,
+    DimInAtmosphere = true,
     Labels = {
       File = label,
-      Opacity = 0.3,
       Color = { 0.8, 0.8, 0.8 },
       Size = 14.5,
       MinMaxSize = { 8, 170 },
       Unit = "pc"
-    },
-    Opacity = 0.3,
-    File = speck,
-    NamesFile = dat,
-    Colors = { { 0.6, 0.4, 0.4 }, { 0.8, 0.0, 0.0 }, { 0.0, 0.3, 0.8 } },
-    Unit = "pc",
-    DimInAtmosphere = true
+    }
   },
   Tag = { "daytime_hidden" },
   GUI = {
-    Name = "Constellation Lines -ally",
+    Name = "Constellation Lines -test",
     Path = "/Milky Way/Constellations",
     Description = [[Lines connecting the stars that make up the constellation figures.
-      We represent the constellations by connecting the main stars that make up the
-      constellation "stick figures," as seen from Earth. Colors: most constellations
-      are pink, while the zodical constellations are red. We also color Orion and Ursa
-      Major blue as two recognizable constellations in the night sky. Census: 88
-      constellations.]]
+        We represent the constellations by connecting the main stars that make up the
+        constellation "stick figures," as seen from Earth. Colors: most constellations
+        are pink, while the zodiacal constellations are red. We also color Orion and Ursa
+        Major blue as two recognizable constellations in the night sky. Census: 88
+        constellations.]]
   }
 }
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
 
 local zodiacsString = zodiacsString(zodiacs)
-
+local ShowZodiacs = {
+  Identifier = "os.constellation.ShowZodiacsAlly",
+  Name = "Show zodiac",
+  Command = [[
+  openspace.setPropertyValueSingle("Scene.Constellations.Renderable.ConstellationSelection", ]] .. zodiacsString .. [[)
+  openspace.fadeIn("Scene.Constellations.Renderable")
+  ]],
+  Documentation = "Shows the zodiac constellations lines",
+  GuiPath = "/Constellations/Lines",
+  IsLocal = false
+  }
+asset.onInitialize(function()
+  openspace.action.registerAction(ShowZodiacs)
+end)
+asset.onDeinitialize(function()
+  openspace.action.removeAction(ShowZodiacs)
+end)
 -- Actions
 local ShowConstellations = {
   Identifier = "os.constellations.ShowConstellationsAlly",
   Name = "Show all",
   Command = [[
-    openspace.setPropertyValueSingle("Scene.Constellations.Renderable.ConstellationSelection", {})
-    openspace.fadeIn("Scene.Constellations.Renderable")
+      openspace.setPropertyValueSingle("Scene.Constellations.Renderable.ConstellationSelection", {})
+      openspace.fadeIn("Scene.Constellations.Renderable")
   ]],
   Documentation = "Shows all the constellations lines",
   GuiPath = "/Constellations/Lines",
   IsLocal = false
-}
+  }
 
 local HideConstellations = {
   Identifier = "os.constellations.HideConstellationsAlly",
@@ -90,46 +114,20 @@ local HideConstellations = {
   GuiPath = "/Constellations/Lines",
   IsLocal = false
 }
-
-local ShowZodiacs = {
-  Identifier = "os.constellation.ShowZodiacsAlly",
-  Name = "Show zodiac",
-  Command = [[
-    openspace.setPropertyValueSingle("Scene.Constellations.Renderable.ConstellationSelection", ]] .. zodiacsString .. [[)
-    openspace.fadeIn("Scene.Constellations.Renderable")
-  ]],
-  Documentation = "Shows the zodiac constellations lines",
-  GuiPath = "/Constellations/Lines",
-  IsLocal = false
-}
-
-
 asset.onInitialize(function()
-  openspace.addSceneGraphNode(Constellations)
-
   openspace.action.registerAction(ShowConstellations)
   openspace.action.registerAction(HideConstellations)
-  openspace.action.registerAction(ShowZodiacs)
 end)
 
 asset.onDeinitialize(function()
-  openspace.action.removeAction(ShowZodiacs)
-  openspace.action.removeAction(HideConstellations)
   openspace.action.removeAction(ShowConstellations)
-
-  openspace.removeSceneGraphNode(Constellations)
+  openspace.action.removeAction(HideConstellations)
 end)
 
-asset.export(Constellations)
-asset.export("ShowConstellations", ShowConstellations.Identifier)
-asset.export("HideConstellations", HideConstellations.Identifier)
-asset.export("ShowZodiacs", ShowZodiacs.Identifier)
-
-
-
 asset.meta = {
-  Description = Constellations.GUI.Description,
-  Author = "Brian Abbott, Zack Reeves (AMNH)",
+  Name = "Constellations",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
   License = "AMNH Digital Universe"
 }

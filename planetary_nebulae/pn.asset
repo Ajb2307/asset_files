@@ -43,7 +43,6 @@ local Object = {
         recently in the younger stellar population. Therefore, we expect to see planetary
         nebulae in the disk of the Galaxy. Census: 1,657 planetary nebulae.]]
   }
-
 }
 
 asset.onInitialize(function()

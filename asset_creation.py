@@ -41,6 +41,12 @@ def import_local_modules(datainfo):
         if datainfo.get("cmap") != None:
             print(f'local cmap = asset.resource("{datainfo["cmap"]}")')
 
+        if datainfo.get("label_file") != None:
+            print(f'local label = asset.resource("{datainfo["label_file"]}")')
+        
+        if datainfo.get("dat_file") != None:
+            print(f'local dat = asset.resource("{datainfo["dat_file"]}")')
+
         print()
 
 def import_local_star_modules(datainfo):
@@ -89,7 +95,7 @@ def set_color_parameters(datainfo):
     
     # set opacity if provided
     if datainfo.get("Opacity") != None:
-        print('    Opacity = ' + datainfo["Opacity"] + ',') #may change later
+        print('    Opacity = ' + datainfo["Opacity"] + ',') 
 
 def set_size_parameters(datainfo):
     try:
@@ -122,11 +128,17 @@ def set_label_parameters(datainfo):
         else:
             label_column = "label"
         
+        print('    DataMapping = {')
+        print('      Name = "' + label_column + '" },')
+
+    if datainfo.get("csv_labels") == True or datainfo.get("label_file") != None:
+        # check used in label file or csv
         try:
-            print('    DataMapping = {')
-            print('      Name = "' + label_column + '" },')
             print('    Labels = {')
-            # this is used for star labels
+        
+            if datainfo.get("label_file") != None: # if label file is provided
+                print('      File = label,')
+
             if datainfo.get("LabelEnabled") == True:
                 print('      Enabled = true,')
 
@@ -137,6 +149,8 @@ def set_label_parameters(datainfo):
             print('    }')
         except KeyError:
             raise KeyError(f'need to set LabelColor, LabelSize, and LabelMinMaxSize in the datainfo dictionary if csv_labels = True')
+        
+    
 
 def define_GUI(datainfo):
     """
@@ -151,7 +165,6 @@ def define_GUI(datainfo):
         print('    Path = "' + datainfo['gui_path'] + '",')
         print('    Description = [[' + datainfo['description'] + ']]')
         print('  }') # end of GUI
-        print()
     except KeyError:
         raise KeyError(f'need to set gui_name, gui_path, and description in the datainfo dictionary')
     
@@ -187,7 +200,159 @@ def initialize_asset_functions(Object = "Object"):
     print()
     print()
 
+def RenderableConstellationLines_Object(datainfo):
+    # START OF OBJECT 
+    print('local Object = {')
+    print('  Identifier = "' + datainfo['identifier'] + '",')
+    # START OF RENDERABLE
+    print('  Renderable = {')
+    print('    Type = "RenderableConstellationLines",')
+    # input file settings
+    print('    File = data_file,')
+    print('    NamesFile = dat,')
+    print('    Unit = "' + datainfo["Unit"] + '",')
+    print('    Enabled = false,')
+    # color, opacity, texture, size settings
+    if datainfo.get("LineWidth") != None:
+        print('    LineWidth= ' + datainfo["LineWidth"] + ',')
+    print('    Colors = { ' + datainfo["Colors"] + ' },')
+    if datainfo.get("Opacity") != None:
+        print('    Opacity = ' + datainfo["Opacity"] + ',') 
+    print('    DimInAtmosphere = true,')
+
+    set_label_parameters(datainfo)
+    print('  },') # END OF RENDERABLE
+
+    print('  Tag = { "daytime_hidden" },')
+    # Print GUI settings
+    define_GUI(datainfo)
+    print('}') # END OF OBJECT
+
+
 # function to create the asset file for various renderables
+def make_RenderableConstellationLines_asset(datainfo):
+        # We shift the stdout to our filehandle so that we don't have to keep putting
+    # the filehandle in every print statement.
+    ## Save the original stdout so we can switch back later
+    original_stdout = sys.stdout
+    ## Open the file to write to
+    outpath = asset_outpath(datainfo)
+
+    with open(outpath, 'wt') as asset:
+        # Switch stdout to the file
+        sys.stdout = asset
+        
+        # Print the header
+        print("-- This file is auto-generated in the " + make_RenderablePointCloud_asset.__name__ + "() function inside " + Path(__file__).name)
+        print()
+
+        import_local_modules(datainfo)
+        
+        #  create zodiac objects if applicable
+        if datainfo.get("zodiacs") == True:
+            print('local constellations_helper = asset.require("util/constellations_helper") ')
+            
+            print('''local zodiacs = {
+"CNC", "TAU", "PSC", "ARI", "LIB", "AQR", "CAP", "SCO", "VIR", "SGR", "GEM", "LEO"
+}
+
+local function zodiacsString(zodiacsList)
+local zodiacsString = "{"
+local isFirst = true
+
+for k, zodiac in pairs(zodiacsList) do
+    local fullName = constellations_helper.findFullName(zodiac)
+    if fullName ~= nil then
+    if isFirst then
+        isFirst = false
+    else
+        zodiacsString = zodiacsString .. ", "
+    end
+
+    zodiacsString = zodiacsString .. [["]] .. fullName .. [["]]
+    end
+end
+
+zodiacsString = zodiacsString .. "}"
+return zodiacsString
+end''') 
+            print()
+            
+        # START OF OBJECT
+        RenderableConstellationLines_Object(datainfo)
+        
+        # initialize asset functions 
+        initialize_asset_functions()
+        
+        if datainfo.get("zodiacs") == True:
+            print('local zodiacsString = zodiacsString(zodiacs)')
+            print('''local ShowZodiacs = {
+  Identifier = "os.constellation.ShowZodiacsAlly",
+  Name = "Show zodiac",
+  Command = [[
+  openspace.setPropertyValueSingle("Scene.Constellations.Renderable.ConstellationSelection", ]] .. zodiacsString .. [[)
+  openspace.fadeIn("Scene.Constellations.Renderable")
+  ]],
+  Documentation = "Shows the zodiac constellations lines",
+  GuiPath = "/Constellations/Lines",
+  IsLocal = false
+  }''')
+            # initialize asset functions
+            print('asset.onInitialize(function()')
+            print('  openspace.action.registerAction(ShowZodiacs)')
+            print('end)')
+
+            print('asset.onDeinitialize(function()')
+            print('  openspace.action.removeAction(ShowZodiacs)')
+            print('end)')
+        
+        if datainfo.get("constellation_actions") == True:
+            print('''-- Actions
+local ShowConstellations = {
+  Identifier = "os.constellations.ShowConstellationsAlly",
+  Name = "Show all",
+  Command = [[
+      openspace.setPropertyValueSingle("Scene.Constellations.Renderable.ConstellationSelection", {})
+      openspace.fadeIn("Scene.Constellations.Renderable")
+  ]],
+  Documentation = "Shows all the constellations lines",
+  GuiPath = "/Constellations/Lines",
+  IsLocal = false
+  }
+
+local HideConstellations = {
+  Identifier = "os.constellations.HideConstellationsAlly",
+  Name = "Hide all",
+  Command = [[
+    openspace.fadeOut("Scene.Constellations.Renderable", nil, "openspace.setPropertyValueSingle('Scene.Constellations.Renderable.Enabled', false); openspace.setPropertyValueSingle('Scene.Constellations.Renderable.ConstellationSelection', {})")
+  ]],
+  Documentation = "Hides all the constellations lines",
+  GuiPath = "/Constellations/Lines",
+  IsLocal = false
+}''')
+            # initialize asset functions
+            print('asset.onInitialize(function()')
+            print('  openspace.action.registerAction(ShowConstellations)')
+            print('  openspace.action.registerAction(HideConstellations)')
+            print('end)')
+            print()
+
+            print('asset.onDeinitialize(function()')
+            print('  openspace.action.removeAction(ShowConstellations)')
+            print('  openspace.action.removeAction(HideConstellations)')
+            print('end)')
+            print()
+        
+        
+        # Print the metadata for the asset
+        asset_metadata(datainfo)
+    
+    # Close the file and switch back to original stdout
+    sys.stdout = original_stdout
+
+    # Report to stdout
+    print()
+
 def make_RenderablePointCloud_asset(datainfo):
     """
     Generate the asset file for the deep sky survey data.
@@ -252,7 +417,7 @@ def make_RenderablePointCloud_asset(datainfo):
 
         # Print the metadata for the asset
         asset_metadata(datainfo)
-    
+
     # Close the file and switch back to original stdout
     sys.stdout = original_stdout
 
@@ -489,7 +654,88 @@ def make_RenderableStars_asset(datainfo):
 
     # Report to stdout
     print()
-     
+
+def make_RenderableDUMeshes_asset(datainfo):
+     # We shift the stdout to our filehandle so that we don't have to keep putting
+    # the filehandle in every print statement.
+    ## Save the original stdout so we can switch back later
+    original_stdout = sys.stdout
+    ## Open the file to write to
+    outpath = asset_outpath(datainfo)
+
+    with open(outpath, 'wt') as asset:
+        # Switch stdout to the file
+        sys.stdout = asset
+        
+        # Print the header
+        print("-- This file is auto-generated in the " + make_RenderableDUMeshes_asset.__name__ + "() function inside " + Path(__file__).name)
+        print()
+        
+        import_local_star_modules(datainfo)
+
+        # START OF OBJECT 
+        print('local Object = {')
+        print('  Identifier = "' + datainfo['identifier'] + '",')
+        # START OF RENDERABLE
+        print('  Renderable = {')
+        print('    Type = "RenderableStars",')
+
+        # input file settings
+        print('    File = data_file,')
+        
+        # input glare and halo settings
+        print('    Core = {')
+        print('      Texture = core_texture,')
+        print('      Multiplier = 15.0,')
+        print('      Gamma = 1.66,')
+        print('      Scale = 0.18')
+        print('      },')
+        print('    Glare = {')
+        print('      Texture = glare_texture,')
+        print('      Multiplier = 0.65')
+        print('      },')
+        
+        ## misc color size settings
+        print('    MagnitudeExponent = 6.325,')
+        print('    ColorMap = cmap,')
+        print('    OtherDataColorMap = other_cmap,')
+        print('    SizeComposition = "Distance Modulus",')
+        
+        print('    DataMapping = {')
+        print('      Bv = "' + datainfo['Bv_column']+'",')
+        print('      Luminance = "' + datainfo['Luminance_column']+'",')
+        print('      AbsoluteMagnitude = "' + datainfo['AbsoluteMagnitude_column']+'",')
+        print('      ApparentMagnitude = "' + datainfo['ApparentMagnitude_column']+'",')
+        print('      Vx = "' + datainfo['Vx_column']+'",')
+        print('      Vy = "' + datainfo['Vy_column']+'",')
+        print('      Vz = "' + datainfo['Vz_column']+'",')
+        print('      Speed = "' + datainfo['Speed_column']+'",')
+        print('    },')
+        
+        print('    DimInAtmosphere = true')
+        
+        print('  },') # END OF RENDERABLE
+        
+        print('  Tag = { "daytime_hidden" },')
+
+        # input GUI settings
+        define_GUI(datainfo)
+
+        print('}') # END OF OBJECT
+        print()
+
+        # initialize asset functions 
+        initialize_asset_functions()
+
+        # Print the metadata for the asset
+        asset_metadata(datainfo)
+    
+    # Close the file and switch back to original stdout
+    sys.stdout = original_stdout
+
+    # Report to stdout
+    print()
+
 
 # master function to write the asset file
 # This function will call the appropriate asset creation function based on the datainfo provided.
@@ -511,3 +757,9 @@ def write_asset(datainfo):
     
     elif datainfo["renderable"] == "RenderableStars":
         make_RenderableStars_asset(datainfo)
+    
+    elif datainfo["renderable"] == "RenderableConstellationLines":
+        make_RenderableConstellationLines_asset(datainfo)
+    
+    else:
+        raise ValueError(f'Unknown renderable type: {datainfo["renderable"]}')

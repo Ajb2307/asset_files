@@ -56,7 +56,6 @@ local Object = {
         for L type objects, Maroon for T type, and purple for Y type objects. Census:
         2,196 objects.]]
   }
-
 }
 
 asset.onInitialize(function()

@@ -40,7 +40,6 @@ local Object = {
         than one planet, will list the number of planets in parentheses. Census: 5,589
         planets in 4,139 systems.]]
   }
-
 }
 
 asset.onInitialize(function()

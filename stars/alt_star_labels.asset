@@ -33,7 +33,6 @@ local Object = {
         (Greek designations, like Alpha Orionis), then to Flamsteed numbers (like 1
         Orionis).]]
   }
-
 }
 
 asset.onInitialize(function()

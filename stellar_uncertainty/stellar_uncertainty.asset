@@ -1,0 +1,60 @@
+-- This file is auto-generated in the make_RenderablePointCloud_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local data_file = asset.resource("star_uncertainty.speck")
+local label = asset.resource("star_uncertainty.label")
+local dat = asset.resource("star_uncertainty.dat")
+
+local Object = {
+  Identifier = "StarUncertainty_test",
+  Renderable = {
+    Type = "RenderableConstellationLines",
+    File = data_file,
+    NamesFile = dat,
+    Unit = "pc",
+    Enabled = false,
+    LineWidth= 5.0,
+    Colors = { {1.0, 1.0, 0.0}, {0.0, 0.8, 1.0}, {0.957, 0.51, 0.10} },
+    Opacity = 0.8,
+    DimInAtmosphere = true,
+    Labels = {
+      File = label,
+      Color = { 0.6, 0.6, 1.0 },
+      Size = 14.1,
+      MinMaxSize = { 8, 170 },
+      Unit = "pc"
+    }
+  },
+  Tag = { "daytime_hidden" },
+  GUI = {
+    Name = "Star Distance Uncertainty-test",
+    Path = "/Milky Way/Stars",
+    Description = [[The uncertainty of a star's position is derived from the uncertainty
+        in its parallax measurement. This results in a range in distance where the star
+        could exist. Here we draw lines on top of select stars which give us a visual cue
+        of the range in possible distances for that star. Colors: Aqua lines are stars with
+        Gaia geometric parallax measurements (the most accurate), orange lines indicate
+        stars with Hipparcos geometric parallaxes, and yellow lines are stars with Gaia
+        photogeometric parallaxes (the least accurate). The label includes the star name
+        and the length of the uncertainty in light years. Census: 3,440 stars with
+        uncertainty.]]
+  }
+}
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "Star Distance Uncertainty",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

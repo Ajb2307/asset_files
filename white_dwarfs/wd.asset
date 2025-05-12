@@ -34,7 +34,6 @@ local Object = {
         planetary nebula, while the core of the star transforms into a white dwarf. Census:
         192,613 white dwarfs.]]
   }
-
 }
 
 asset.onInitialize(function()

@@ -42,7 +42,6 @@ local Object = {
         time, so the supernova remnants we see must be left from explosions that have
         occurred recently, cosmically speaking. Census: 112 supernova remnants.]]
   }
-
 }
 
 asset.onInitialize(function()

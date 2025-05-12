@@ -42,7 +42,6 @@ local Object = {
         from its poles. When these beams point to Earth, we see a strong radio signal.
         Census: 3,221 pulsars.]]
   }
-
 }
 
 asset.onInitialize(function()

@@ -42,7 +42,6 @@ local Object = {
         spiral galaxies such as our Milky Way. Because of this, they are great tracers of
         the spiral arms of the Galaxy. Census: 1,108 star-forming regions.]]
   }
-
 }
 
 asset.onInitialize(function()

@@ -42,7 +42,6 @@ local Object = {
         furious rate. As the material falls into the black hole, it forms a disk and emits
         high-energy light that we see to great distances. Census: 755,850 quasars.]]
   }
-
 }
 
 asset.onInitialize(function()

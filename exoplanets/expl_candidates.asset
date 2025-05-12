@@ -43,7 +43,6 @@ local Object = {
         entire Galaxy. Colors: Yellow denote Kepler candidates, Orange stars are from the K2
         mission, and green stars are from TESS. Census: 7,225 candidate stars.]]
   }
-
 }
 
 asset.onInitialize(function()

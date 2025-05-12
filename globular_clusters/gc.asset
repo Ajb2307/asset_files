@@ -37,7 +37,6 @@ local Object = {
         stellar densities. These clusters are typically 30 to 100 light years in diameter.
         Census: 161 globular clusters.]]
   }
-
 }
 
 asset.onInitialize(function()
