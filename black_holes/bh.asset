@@ -17,7 +17,7 @@ local Object = {
     Texture = {
       File = texture },
     SizeSettings = {
-      ScaleExponent = 18.6,
+      ScaleExponent = 19.0,
       MaxSize = 13.0,
       EnableMaxSizeControl = true
      },
