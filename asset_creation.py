@@ -47,6 +47,9 @@ def import_local_modules(datainfo):
         if datainfo.get("dat_file") != None:
             print(f'local dat = asset.resource("{datainfo["dat_file"]}")')
 
+        if datainfo.get("data_folder") != None:
+            print(f'local folder = asset.resource("{datainfo["dat_file"]}")')
+
         print()
 
 def import_local_star_modules(datainfo):
@@ -228,6 +231,50 @@ def RenderableConstellationLines_Object(datainfo):
     define_GUI(datainfo)
     print('}') # END OF OBJECT
 
+def RenderableDUMeshes_Object(datainfo, object):
+
+    object_dict = datainfo["objects"][object]
+    
+    # START OF OBJECT 
+    print('local ' + object + ' = {')    
+    
+    # variables from object dictionary
+    try:
+        print('  Identifier = "' + object_dict['identifier'] + '",')
+        # START OF RENDERABLE
+        print('  Renderable = {')
+        print('    Type = "RenderableDUMeshes",')
+        print('    File = folder .. "' + object_dict['speck_file'] + '",')
+        print('    MeshColor = { {' + object_dict['MeshColor'] + '} },')
+    except KeyError:
+        raise KeyError(f'need to set identifier, speck_file, and MeshColor in the datainfo["objects"]["{object}"] dictionary')
+
+    # variables in main dictionary
+    try:
+        print('    Opacity = ' + datainfo['Opacity'] + ',')
+        print('    Enabled = ' + datainfo['Enabled'] + ',')
+        print('    Unit = "' + datainfo["Unit"] + '",')
+    except KeyError:
+        raise KeyError(f'need to set Opacity, Enabled, and Unit in the datainfo dictionary')
+    
+    print('  },') # END OF RENDERABLE
+
+    print('  GUI = {')
+    # Print GUI settings
+    try:
+        print('    Path = "' + datainfo['gui_path'] + '",')
+    except KeyError:
+        raise KeyError(f'need to set gui_path in the datainfo dictionary')
+    
+    try:
+        print('    Name = "' + object_dict['gui_name'] + '",')
+        print('    Description = [[' + object_dict['description'] + ']]')
+        print('  }') # end of GUI
+    except KeyError:
+        raise KeyError(f'need to set gui_name and description in the datainfo["objects"]["{object} dictionary')
+    
+    print('}') # END OF OBJECT
+    print()
 
 # function to create the asset file for various renderables
 def make_RenderableConstellationLines_asset(datainfo):
@@ -659,6 +706,9 @@ def make_RenderableDUMeshes_asset(datainfo):
      # We shift the stdout to our filehandle so that we don't have to keep putting
     # the filehandle in every print statement.
     ## Save the original stdout so we can switch back later
+
+    ## this function is used to create an asset for star orbits which creates multiple objects 
+
     original_stdout = sys.stdout
     ## Open the file to write to
     outpath = asset_outpath(datainfo)
@@ -671,64 +721,44 @@ def make_RenderableDUMeshes_asset(datainfo):
         print("-- This file is auto-generated in the " + make_RenderableDUMeshes_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
         
-        import_local_star_modules(datainfo)
+        print(f'local folder = asset.resource("{datainfo["data_folder"]}")')
 
-        # START OF OBJECT 
-        print('local Object = {')
-        print('  Identifier = "' + datainfo['identifier'] + '",')
-        # START OF RENDERABLE
-        print('  Renderable = {')
-        print('    Type = "RenderableStars",')
-
-        # input file settings
-        print('    File = data_file,')
-        
-        # input glare and halo settings
-        print('    Core = {')
-        print('      Texture = core_texture,')
-        print('      Multiplier = 15.0,')
-        print('      Gamma = 1.66,')
-        print('      Scale = 0.18')
-        print('      },')
-        print('    Glare = {')
-        print('      Texture = glare_texture,')
-        print('      Multiplier = 0.65')
-        print('      },')
-        
-        ## misc color size settings
-        print('    MagnitudeExponent = 6.325,')
-        print('    ColorMap = cmap,')
-        print('    OtherDataColorMap = other_cmap,')
-        print('    SizeComposition = "Distance Modulus",')
-        
-        print('    DataMapping = {')
-        print('      Bv = "' + datainfo['Bv_column']+'",')
-        print('      Luminance = "' + datainfo['Luminance_column']+'",')
-        print('      AbsoluteMagnitude = "' + datainfo['AbsoluteMagnitude_column']+'",')
-        print('      ApparentMagnitude = "' + datainfo['ApparentMagnitude_column']+'",')
-        print('      Vx = "' + datainfo['Vx_column']+'",')
-        print('      Vy = "' + datainfo['Vy_column']+'",')
-        print('      Vz = "' + datainfo['Vz_column']+'",')
-        print('      Speed = "' + datainfo['Speed_column']+'",')
-        print('    },')
-        
-        print('    DimInAtmosphere = true')
-        
-        print('  },') # END OF RENDERABLE
-        
-        print('  Tag = { "daytime_hidden" },')
-
-        # input GUI settings
-        define_GUI(datainfo)
-
-        print('}') # END OF OBJECT
-        print()
+        for object in datainfo["objects"].keys():
+            
+            RenderableDUMeshes_Object(datainfo, object)
 
         # initialize asset functions 
-        initialize_asset_functions()
+        print('asset.onInitialize(function()')
+        for object in datainfo["objects"].keys():
+            print('    openspace.addSceneGraphNode(' + object + ')')
+        print('end)')
+        print()
+
+        # deinitialize asset functions
+        print('asset.onDeinitialize(function()')
+        for object in datainfo["objects"].keys():
+            print('    openspace.removeSceneGraphNode(' + object + ')')
+        print('end)')
+        print()
+
+        # export asset functions
+        for object in datainfo["objects"].keys():
+            print('asset.export(' + object + ')')
+        print()
+        print()
 
         # Print the metadata for the asset
-        asset_metadata(datainfo)
+        try:
+            print('asset.meta = {')
+            print('  Name = "' + datainfo["meta_name"] + '",')
+            print('  Description = [[' + datainfo["meta_description"] + ']],')
+            print('  Author = "' + datainfo["author"] + '",')
+            print('  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",')
+            print('  License = "AMNH Digital Universe"')
+            print('}')
+        
+        except KeyError:
+            raise KeyError(f'need to set meta_name, author, and license in the datainfo dictionary')
     
     # Close the file and switch back to original stdout
     sys.stdout = original_stdout
@@ -760,6 +790,9 @@ def write_asset(datainfo):
     
     elif datainfo["renderable"] == "RenderableConstellationLines":
         make_RenderableConstellationLines_asset(datainfo)
+
+    elif datainfo["renderable"] == "RenderableDUMeshes":
+        make_RenderableDUMeshes_asset(datainfo)
     
     else:
         raise ValueError(f'Unknown renderable type: {datainfo["renderable"]}')

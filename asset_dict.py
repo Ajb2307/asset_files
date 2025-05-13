@@ -689,6 +689,65 @@ master_dictionary = {
         "meta_name": "Constellations",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
     },
+    'star_orbits': {
+        "renderable": "RenderableDUMeshes",
+        "filename": "star_orbits",
+        "Enabled": "false",
+        "asset_dir": "star_orbits",
+        "data_folder": "",
+        "Unit": "pc",
+        "Opacity": "1.0",
+        "gui_path": "/Milky Way/Star Orbits",
+        "objects": {"SunOrbit": {
+                        "identifier": "SunOrbit_test",
+                        "speck_file": "starorbits-Sun.speck",
+                        "MeshColor": "1.0, 0.65, 0.0",
+                        "gui_name": "Sun Orbit -test",
+                        "description": """Projected orbit of the Sun around the Milky Way over the next 1 billion years.""" 
+                        },
+                    "BarnardsOrbit":  {
+                        "identifier": "BarnardsOrbit_test",
+                        "speck_file": "starorbits-BarnardsStar.speck",
+                        "MeshColor": "0.39, 0.58, 0.93",
+                        "gui_name": "Barnards Orbit -test",
+                        "description": """Projected orbit of the Barnard's Star around the Milky Way over the next 1 billion years.""" 
+                        },
+                    "KapteynsOrbit":  {
+                        "identifier": "KapteynsOrbit_test",
+                        "speck_file": "starorbits-KapteynsStar.speck",
+                        "MeshColor": "0.6, 0.6, 0.6",
+                        "gui_name": "Kapteyns Orbit -test",
+                        "description": """Projected orbit of the Kapteyn's Star around the Milky Way over the next 1 billion years.""" 
+                        },
+                    "Lacaille9352Orbit":  {
+                        "identifier": "Lacaille9352Orbit_test",
+                        "speck_file": "starorbits-Lacaille9352.speck",
+                        "MeshColor": "0.58, 0.0, 0.83",
+                        "gui_name": "Lacaille 9352 Orbit -test",
+                        "description": """Projected orbit of the Lacaille9352 around the Milky Way over the next 1 billion years.""" }, 
+                    "LSR1826Orbit":  {
+                        "identifier": "LSR1826Orbit_test",
+                        "speck_file": "starorbits-LSR1826+3014.speck",
+                        "MeshColor": "0.0, 0.39, 0.0",
+                        "gui_name": "LSR1826+3014 Orbit -test",
+                        "description": """Projected orbit of the LSR1826+3014 around the Milky Way over the next 1 billion years.""" },
+                    "LSRJ0822Orbit":  {
+                        "identifier": "LSRJ0822Orbit_test",
+                        "speck_file": "starorbits-LSRJ0822+1700.speck",
+                        "MeshColor": "0.5, 1.0, 0.0",
+                        "gui_name": "LSRJ0822+1700 Orbit -test",
+                        "description": """Projected orbit of the LSRJ0822+1700 around the Milky Way over the next 1 billion years.""" },
+                    "PM_J13420Orbit":  {
+                        "identifier": "PM_J13420Orbit_test",
+                        "speck_file": "starorbits-PM_J13420-3415.speck",
+                        "MeshColor": "0.70, 0.13, 0.13",
+                        "gui_name": "PM_J13420-3415 Orbit -test",
+                        "description": """Projected orbit of the PM_J13420-3415 around the Milky Way over the next 1 billion years.""" },
+        },
+        "meta_name": "Star Orbits",
+        "meta_description": """Projected star orbits for selected stars over the next 1 billion years. Census: 7 star orbits.""",
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)"
+    }
 }
 
 def data_info(data_name):
