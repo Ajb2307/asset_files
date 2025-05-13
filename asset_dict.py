@@ -689,6 +689,23 @@ master_dictionary = {
         "meta_name": "Constellations",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
     },
+    'constellation_bounds': {
+        "renderable": "RenderableConstellationBounds",
+        "filename": "constellation_bounds",
+        "Enabled": "false",
+        "asset_dir": "constellations",
+        "data_file": "constellation_boundaries.dat",
+        "dat_file": "constellations.dat",
+        "identifier": "ConstellationBounds-test",
+        "gui_name": "Constellation Boundaries-test",
+        "gui_path": "/Milky Way/Constellations",
+        "description": """As a continent is divided into countries, astronomers divide the sky
+        into 88 regions called constellations. Every object falls into one of these 88
+        regions. The boundaries of these regions are shown in this asset. Use these in
+        concert with the constellation labels. Census: 88 constellations.""",
+        "meta_name": "Constellation Bounds",
+        "author": "Brian Abbott and Ally Baldelli (AMNH)"
+    },
     'star_orbits': {
         "renderable": "RenderableDUMeshes",
         "filename": "star_orbits",
@@ -748,6 +765,7 @@ master_dictionary = {
         "meta_description": """Projected star orbits for selected stars over the next 1 billion years. Census: 7 star orbits.""",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)"
     }
+    
 }
 
 def data_info(data_name):

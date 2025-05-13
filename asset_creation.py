@@ -766,6 +766,72 @@ def make_RenderableDUMeshes_asset(datainfo):
     # Report to stdout
     print()
 
+def make_RenderableConstellationBounds_asset(datainfo):
+    # We shift the stdout to our filehandle so that we don't have to keep putting
+    # the filehandle in every print statement.
+    ## Save the original stdout so we can switch back later
+    original_stdout = sys.stdout
+    ## Open the file to write to
+    outpath = asset_outpath(datainfo)
+
+    with open(outpath, 'wt') as asset:
+        # Switch stdout to the file
+        sys.stdout = asset
+        
+        # Print the header
+        print("-- This file is auto-generated in the " + make_RenderableConstellationBounds_asset.__name__ + "() function inside " + Path(__file__).name)
+        print()
+        
+        
+        import_local_modules(datainfo)
+        print('local coreKernels = asset.require("spice/core")')
+        print()
+
+        # START OF OBJECT 
+        print('local Object = {')
+        print('  Identifier = "' + datainfo['identifier'] + '",')
+        # START OF RENDERABLE
+        print('  Renderable = {')
+        print('    Type = "RenderableConstellationBounds",')
+        print('    Enabled = ' + datainfo["Enabled"] + ',')
+        
+        # input file settings
+        print('    File = data_file,')
+        print('    NamesFile = dat,')
+        
+        print('  },') # END OF RENDERABLE
+        
+        # START OF TRANSFORM
+        print('  Transform = {')
+        print('    Rotation = {') # START OF ROTATION
+        print('      Type = "SpiceRotation",')
+        print('      SourceFrame = coreKernels.Frame.J2000,')
+        print('      DestinationFrame = coreKernels.Frame.Galactic')
+        print('    },') # END OF ROTATION
+        print('    Scale = {') # START OF SCALE
+        print('      Type = "StaticScale",')
+        print('      Scale = 10e17')
+        print('    }') # END OF SCALE
+        print('  },') # END OF TRANSFORM
+
+    
+        # input GUI settings
+        define_GUI(datainfo)
+
+        print('}') # END OF OBJECT
+        print()
+
+        # initialize asset functions 
+        initialize_asset_functions()
+
+        # Print the metadata for the asset
+        asset_metadata(datainfo)
+    
+    # Close the file and switch back to original stdout
+    sys.stdout = original_stdout
+
+    # Report to stdout
+    print()
 
 # master function to write the asset file
 # This function will call the appropriate asset creation function based on the datainfo provided.
@@ -794,5 +860,7 @@ def write_asset(datainfo):
     elif datainfo["renderable"] == "RenderableDUMeshes":
         make_RenderableDUMeshes_asset(datainfo)
     
+    elif datainfo["renderable"] == "RenderableConstellationBounds":
+        make_RenderableConstellationBounds_asset(datainfo)
     else:
         raise ValueError(f'Unknown renderable type: {datainfo["renderable"]}')
