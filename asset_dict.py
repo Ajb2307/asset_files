@@ -580,8 +580,8 @@ master_dictionary = {
         "Opacity": None,  # No opacity specified in the asset file
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
-        "ScaleExponent": "15.5",
-        "MaxSize": "0.7",
+        "ScaleExponent": "18.6",
+        "MaxSize": "13.0",
         "csv_labels": False,  # No labels specified in the asset file
         "LabelColor": None,
         "LabelSize": None,
