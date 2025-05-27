@@ -27,30 +27,83 @@ def asset_outpath(datainfo):
     # Return the output path
     return outpath / outfile
 
+
 def import_local_modules(datainfo):
-        # importing local modules
-        print('-- Set some parameters for OpenSpace settings')
+    # importing local modules
+    print('-- Set some parameters for OpenSpace settings')
+    try:
+        print(f'local data_file = asset.resource("{datainfo["data_file"]}")')
+    except KeyError:
+        raise KeyError(f'need to set data_file in the datainfo dictionary')
+
+    if datainfo.get("texture") != None:
+        print(f'local texture = asset.resource("{datainfo["texture"]}")')
+    
+    if datainfo.get("cmap") != None:
+        print(f'local cmap = asset.resource("{datainfo["cmap"]}")')
+
+    if datainfo.get("label_file") != None:
+        print(f'local label = asset.resource("{datainfo["label_file"]}")')
+    
+    if datainfo.get("dat_file") != None:
+        print(f'local dat = asset.resource("{datainfo["dat_file"]}")')
+
+    if datainfo.get("data_folder") != None: # used for star orbits to iterate through multiple speck files
+        print(f'local folder = asset.resource("{datainfo["dat_file"]}")')
+
+    print()
+
+def import_OpenSpace_modules(datainfo):
+    # importing local modules locations
+    print('-- Set some parameters for OpenSpace settings')
+    try:
+        print('local data_folder = asset.resource({')
+        print(f'  Name = "{datainfo["data_folder_Name"]}",')
+        print( '  Type = "HttpSynchronization",')
+        print(f'  Identifier = "{datainfo["data_folder_Identifier"]}",')
+        print(f'  Version = {datainfo["data_folder_Version"]}')
+        print('})')
+    except KeyError:
+        raise KeyError(f'need to set data_folder_Name, data_folder_Version, and data_folder_Identifier \
+                        in the datainfo dictionary when local_modules = False')
+
+    if datainfo.get("texture") != None: # if texture is needed its found in this folder
         try:
-            print(f'local data_file = asset.resource("{datainfo["data_file"]}")')
+            print('local texture_folder = asset.resource({')
+            print(f'  Name = "{datainfo["textures_folder_Name"]}",')
+            print( '  Type = "HttpSynchronization",')
+            print(f'  Identifier = "{datainfo["textures_folder_Identifier"]}",')
+            print(f'  Version = {datainfo["textures_folder_Version"]}')
+            print('})')
         except KeyError:
-            raise KeyError(f'need to set data_file in the datainfo dictionary')
-
-        if datainfo.get("texture") != None:
-            print(f'local texture = asset.resource("{datainfo["texture"]}")')
+            raise KeyError(f'need to set textures_folder_Name, textures_folder_Version, and textures_folder_Identifier \
+                           in the datainfo dictionary when local_modules = False and texture is provided')
         
-        if datainfo.get("cmap") != None:
-            print(f'local cmap = asset.resource("{datainfo["cmap"]}")')
+    # assign variables for the OpenSpace modules
+    try:
+        print(f'local data_file = data_folder .. "{datainfo["data_file"]}"')
+    except KeyError:
+        raise KeyError(f'need to set data_file in the datainfo dictionary')
 
-        if datainfo.get("label_file") != None:
-            print(f'local label = asset.resource("{datainfo["label_file"]}")')
-        
-        if datainfo.get("dat_file") != None:
-            print(f'local dat = asset.resource("{datainfo["dat_file"]}")')
+    if datainfo.get("texture") != None:
+        print(f'local texture = texture_folder .. "{datainfo["texture"]}"')
+    
+    if datainfo.get("cmap") != None:
+        print(f'local cmap = data_folder .. "{datainfo["cmap"]}"')
 
-        if datainfo.get("data_folder") != None:
-            print(f'local folder = asset.resource("{datainfo["dat_file"]}")')
+    if datainfo.get("label_file") != None:
+        print(f'local label = data_folder .. "{datainfo["label_file"]}"')
+    
+    if datainfo.get("dat_file") != None:
+        print(f'local dat = data_folder .. "{datainfo["dat_file"]}"')
+    
+    print()
 
-        print()
+def import_modules(datainfo):
+    if datainfo["local_modules"] == True:
+        import_local_modules(datainfo)
+    else:
+        import_OpenSpace_modules(datainfo)
 
 def import_local_star_modules(datainfo):
         # importing local modules
@@ -425,7 +478,7 @@ def make_RenderablePointCloud_asset(datainfo):
         print("-- This file is auto-generated in the " + make_RenderablePointCloud_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
         
-        import_local_modules(datainfo)
+        import_modules(datainfo)
 
         # START OF OBJECT 
         print('local Object = {')
@@ -499,7 +552,7 @@ def make_star_labels_asset(datainfo):
         print("-- This file is auto-generated in the " + make_star_labels_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
         
-        import_local_modules(datainfo)
+        import_modules(datainfo)
 
         # START OF OBJECT 
         print('local Object = {')
@@ -567,7 +620,7 @@ def make_RenderablePolygonCloud_asset(datainfo):
         print("-- This file is auto-generated in the " + make_RenderablePolygonCloud_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
         
-        import_local_modules(datainfo)
+        import_modules(datainfo)
 
         # START OF OBJECT 
         print('local Object = {')
@@ -783,7 +836,7 @@ def make_RenderableConstellationBounds_asset(datainfo):
         print()
         
         
-        import_local_modules(datainfo)
+        import_modules(datainfo)
         print('local coreKernels = asset.require("spice/core")')
         print()
 
