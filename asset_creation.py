@@ -217,12 +217,12 @@ def define_GUI(datainfo):
     # GUI settings
     try:
         print('  GUI = {')
-        print('    Name = "' + datainfo['gui_name'] + '",')
-        print('    Path = "' + datainfo['gui_path'] + '",')
-        print('    Description = [[' + datainfo['description'] + ']]')
+        print('    Name = "' + datainfo['GUI']['Name'] + '",')
+        print('    Path = "' + datainfo['GUI']['Path'] + '",')
+        print('    Description = [[' + datainfo['GUI']['Description'] + ']]')
         print('  }') # end of GUI
     except KeyError:
-        raise KeyError(f'need to set gui_name, gui_path, and description in the datainfo dictionary')
+        raise KeyError(f'need to set Name, Path, and Description in the datainfo["GUI"] dictionary')
     
 def asset_metadata(datainfo):
 
@@ -236,7 +236,7 @@ def asset_metadata(datainfo):
         print('}')
     
     except KeyError:
-        raise KeyError(f'need to set meta_name, author, and license in the datainfo dictionary')
+        raise KeyError(f'need to set meta_name and author in the datainfo dictionary')
 
 def initialize_asset_functions(Object = "Object"):
     """
@@ -312,19 +312,10 @@ def RenderableDUMeshes_Object(datainfo, object):
     
     print('  },') # END OF RENDERABLE
 
-    print('  GUI = {')
-    # Print GUI settings
     try:
-        print('    Path = "' + datainfo['gui_path'] + '",')
+        define_GUI(object_dict)
     except KeyError:
-        raise KeyError(f'need to set gui_path in the datainfo dictionary')
-    
-    try:
-        print('    Name = "' + object_dict['gui_name'] + '",')
-        print('    Description = [[' + object_dict['description'] + ']]')
-        print('  }') # end of GUI
-    except KeyError:
-        raise KeyError(f'need to set gui_name and description in the datainfo["objects"]["{object} dictionary')
+        raise KeyError(f'need to set Name, Path, and Description in the datainfo["objects"]["{object}"]["GUI"] dictionary')
     
     print('}') # END OF OBJECT
     print()
@@ -346,7 +337,7 @@ def make_RenderableConstellationLines_asset(datainfo):
         print("-- This file is auto-generated in the " + make_RenderablePointCloud_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
 
-        import_local_modules(datainfo)
+        import_modules(datainfo)
         
         #  create zodiac objects if applicable
         if datainfo.get("zodiacs") == True:

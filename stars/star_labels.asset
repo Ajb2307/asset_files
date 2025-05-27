@@ -30,7 +30,7 @@ local Object = {
     Name = "Stars Labels -test",
     Path = "/Milky Way/Stars",
     Description = [[Common name labels for nearby stars in the Milky Way. See 'Stars'
-        for more information.]]
+            for more information.]]
   }
 }
 

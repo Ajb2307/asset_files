@@ -5,6 +5,7 @@ local data_file = asset.resource("constellation_boundaries.dat")
 local dat = asset.resource("constellations.dat")
 
 local coreKernels = asset.require("spice/core")
+
 local Object = {
   Identifier = "ConstellationBounds-test",
   Renderable = {

@@ -33,9 +33,9 @@ local Object = {
     Name = "Globular Clusters-test",
     Path = "/Milky Way/Star Clusters",
     Description = [[Globular star clusters are gravitationally bound groups of 100,000
-        to 1 million stars. They are compact, spherical "balls" of stars with very high
-        stellar densities. These clusters are typically 30 to 100 light years in diameter.
-        Census: 161 globular clusters.]]
+            to 1 million stars. They are compact, spherical "balls" of stars with very high
+            stellar densities. These clusters are typically 30 to 100 light years in diameter.
+            Census: 161 globular clusters.]]
   }
 }
 
@@ -51,7 +51,7 @@ asset.export(Object)
 
 
 asset.meta = {
-  Name = "Globular Clusters",
+  Name = "Star Orbits",
   Description = Object.GUI.Description,
   Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
   URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
