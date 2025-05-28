@@ -8,13 +8,15 @@ master_dictionary = {
         "local_modules": True,
         "Unit": "Mpc",
         "texture": "point3A.png",
-        "cmap": "2df.cmap",
         "identifier": "2dF_test",
-        "fixed_color": "1.0, 1.0, 1.0", # not used
+        "FixedColor": "1.0, 1.0, 1.0", # not used
         "Opacity": "1.0",
-        "colormap_enabled": "true",
-        "parameter_options": [{"key": "num_nearby_galaxies", "range": "1.0, 25.0"},
-                              {"key": "redshift", "range": "0.0, 0.075"}],
+        "ColorMapping": {
+            "File": "2df.cmap",
+            "Enabled": "true",
+            "ParameterOptions": [{"Key": "num_nearby_galaxies", "Range": "1.0, 25.0"},
+                                {"Key": "redshift", "Range": "0.0, 0.075"}]
+            },
         "ScaleExponent": "22.6",
         "MaxSize": "0.2",
         "csv_labels": False,
@@ -46,12 +48,14 @@ master_dictionary = {
         "data_file": "bd.csv",
         "Unit": "pc",
         "texture": "point3.png",
-        "cmap": "bd.cmap",
         "identifier": "BrownDwarfs_test",
-        "fixed_color": "0.4, 0.0, 0.1",
+        "FixedColor": "0.4, 0.0, 0.1",
         "Opacity": "1.0",
-        "colormap_enabled": "true",
-        "parameter_options": [{"key": "typeindex", "range": "1.0, 4.0"}],
+        "ColorMapping": {
+            "File": "bd.cmap",
+            "Enabled": "true",
+            "ParameterOptions": [{"Key": "typeindex", "Range": "1.0, 4.0"}]
+        },
         "ScaleExponent": "15.8",
         "MaxSize": "0.7",
         "csv_labels": True,
@@ -90,15 +94,16 @@ master_dictionary = {
         "data_file": "6df.csv",
         "texture": "point3A.png",
         "Unit": "Mpc",
-        "cmap": "6df.cmap",
         "identifier": "6dF_test",
-        "fixed_color": "1.0, 1.0, 0.0",
+        "FixedColor": "1.0, 1.0, 0.0",
         "Opacity": "1.0",
-        "colormap_enabled": "true",
-        "parameter_options": [
-            {"key": "num_nearby_galaxies", "range": "1.0, 10.0"},
-            {"key": "redshift", "range": "0.0, 0.075"}
-        ],
+        "ColorMapping": {
+            "File": "6df.cmap",
+            "Enabled": "true",
+            "ParameterOptions": [
+                {"Key": "num_nearby_galaxies", "Range": "1.0, 10.0"},
+                {"Key": "redshift", "Range": "0.0, 0.075"}]
+            },
         "ScaleExponent": "22.5",
         "MaxSize": "0.2",
         "csv_labels": False,
@@ -129,13 +134,15 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "sdss.csv",
         "texture": "point3A.png",
-        "cmap": "SDSSgals.cmap",
         "identifier": "SloanDigitalSkySurvey_test",
         "Unit": "Mpc",
-        "fixed_color": "0.8, 0.8, 1.0",
+        "FixedColor": "0.8, 0.8, 1.0",
         "Opacity": "0.8",
-        "colormap_enabled": "true",
-        "parameter_options": [{"key": "num_nearby_galaxies", "range": "1.0, 25.0"}],
+        "ColorMapping": {
+            "File": "SDSSgals.cmap",
+            "Enabled": "true",
+            "ParameterOptions": [{"Key": "num_nearby_galaxies", "Range": "1.0, 25.0"}]
+            },
         "ScaleExponent": "22.6",
         "MaxSize": "0.15",
         "FadeInDistances": "220.0, 650.0",
@@ -170,10 +177,9 @@ master_dictionary = {
         "Enabled": "false",
         "data_file": "wd.csv",
         "texture": "point3.png",
-        "cmap": None,  # No colormap specified in the asset file
         "identifier": "WhiteDwarfs_test",
         "Unit": "pc",
-        "fixed_color": "1.0, 1.0, 1.0",
+        "FixedColor": "1.0, 1.0, 1.0",
         "Opacity": "1.0",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -209,9 +215,8 @@ master_dictionary = {
         "data_file": "expl.csv",
         "texture": "target-blue.png",
         "Unit": "pc",
-        "cmap": None,  # No colormap specified in the asset file
         "identifier": "Exoplanets_test",
-        "fixed_color": None,  # No fixed color specified in the asset file
+        "FixedColor": None,  # No fixed color specified in the asset file
         "Opacity": "1.0",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -244,13 +249,15 @@ master_dictionary = {
         "local_modules": True,
         "Enabled": "false",
         "texture": "halo.png",
-        "cmap": "expl_candidates.cmap",
         "identifier": "PlanetaryCandidates_test",
         "Unit": "pc",
-        "fixed_color": "1.0, 1.0, 0.0",
+        "FixedColor": "1.0, 1.0, 0.0",
         "Opacity": "0.99",
-        "colormap_enabled": "true",
-        "parameter_options": [{"key": "survey_num", "range" : "1.0, 3.0"}],
+        "ColorMapping": {
+            "File": "expl_candidates.cmap",
+            "Enabled": "true",
+            "ParameterOptions": [{"Key": "survey_num", "Range" : "1.0, 3.0"}]
+            },
         "ScaleExponent": "17.8",
         "MaxSize": "1.0",
         "csv_labels": False,
@@ -331,10 +338,9 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "oc.csv",
         "PolygonSides": "12",
-        "cmap": None,  # No colormap specified in the asset file
         "Unit": "pc",
         "identifier": "OpenStarClusters_test",
-        "fixed_color": "0.13, 0.99, 0.50",
+        "FixedColor": "0.13, 0.99, 0.50",
         "Opacity": "0.9",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -367,10 +373,8 @@ master_dictionary = {
         "Unit": "Kpc",
         "PolygonSides": "4",
         "Opacity": "1.0",
-        "texture": None,  # No texture specified in the asset file
-        "cmap": None,  # No colormap specified in the asset file
         "identifier": "Pulsars_test",
-        "fixed_color": "0.7, 0.0, 0.0",
+        "FixedColor": "0.7, 0.0, 0.0",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.1",
@@ -405,10 +409,8 @@ master_dictionary = {
         "Unit": "pc",
         "PolygonSides": "7",
         "Opacity": "0.32",
-        "texture": None,  # No texture specified in the asset file
-        "cmap": None,  # No colormap specified in the asset file
         "identifier": "SupernovaRemnants_test",
-        "fixed_color": "1.0, 0.5, 0.0",
+        "FixedColor": "1.0, 0.5, 0.0",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.4",
@@ -443,10 +445,8 @@ master_dictionary = {
         "Unit": "pc",
         "PolygonSides": "6",
         "Opacity": "0.7",
-        "texture": None,  # No texture specified in the asset file
-        "cmap": None,  # No colormap specified in the asset file
         "identifier": "HIIRegions_test",
-        "fixed_color": "0.0, 0.5, 1.0",
+        "FixedColor": "0.0, 0.5, 1.0",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.5",
@@ -479,13 +479,15 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "ob.csv",
         "PolygonSides": "7",
-        "cmap": "ob.cmap",
         "Unit": "pc",
         "identifier": "OBAssociations_test",
-        "fixed_color": None,  # No fixed color specified in the asset file
+        "FixedColor": None,  # No fixed color specified in the asset file
         "Opacity": "0.7",
-        "colormap_enabled": "true",
-        "parameter_options": [{"key": "armID", "range": "1.0, 3.0"}],
+        "ColorMapping": {
+            "File": "ob.cmap",
+            "Enabled": "true",
+            "ParameterOptions": [{"Key": "armID", "Range": "1.0, 3.0"}]
+            },
         "ScaleExponent": "16.9",
         "MaxSize": "17",
         "SizeMapping_ParameterOptions": "diameter",
@@ -515,10 +517,9 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "gc.csv",
         "PolygonSides": "5",
-        "cmap": None,  # No colormap specified in the asset file
         "Unit": "pc",
         "identifier": "GlobularClusters_test",
-        "fixed_color": "0.8, 0.8, 0.0",
+        "FixedColor": "0.8, 0.8, 0.0",
         "Opacity": "0.65",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -534,7 +535,8 @@ master_dictionary = {
             "Description": """Globular star clusters are gravitationally bound groups of 100,000
             to 1 million stars. They are compact, spherical "balls" of stars with very high
             stellar densities. These clusters are typically 30 to 100 light years in diameter.
-            Census: 161 globular clusters.""",
+            Census: 161 globular clusters."""
+            },
         "meta_name": "Globular Clusters",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
     },
@@ -546,10 +548,9 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "manga.csv",
         "PolygonSides": "5",
-        "cmap": None,  # No colormap specified in the asset file
         "Unit": "Mpc",
         "identifier": "MaNGA_test",
-        "fixed_color": "0.8, 0.8, 0.0",
+        "FixedColor": "0.8, 0.8, 0.0",
         "Opacity": "0.8",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -576,8 +577,8 @@ master_dictionary = {
         "data_file": "stars.speck",
         "core_texture": "glare.png",
         "glare_texture": "halo.png",
-        "cmap": "colorbv.cmap",
-        "other_cmap": "viridis.cmap",
+        "ColorMap": "colorbv.cmap",
+        "OtherDataColorMap": "viridis.cmap",
         "identifier": "Stars_test",
         "Bv_column": "colorb_v",
         "Luminance_column": "lum",
@@ -609,13 +610,15 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "qso.csv",
         "texture": "point3A.png",
-        "cmap": "viridis.cmap",
         "Unit": "Mpc",
         "identifier": "Quasars_test",
-        "fixed_color": "0.85, 0.35, 0.18",
+        "FixedColor": "0.85, 0.35, 0.18",
         "Opacity": "0.95",
-        "colormap_enabled": "false",
-        "parameter_options": [{"key": "lookback_time", "range": "1.4, 13.0"}],
+        "ColorMapping": {
+            "File": "viridis.cmap",
+            "Enabled": "false",
+            "ParameterOptions": [{"Key": "lookback_time", "Range": "1.4, 13.0"}]
+            },
         "ScaleExponent": "23.5",
         "MaxSize": "0.3",
         "FadeInDistances": "1000.0, 10000.0",
@@ -645,10 +648,9 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "bh.csv",
         "texture": "point4.png",
-        "cmap": None,  # No colormap specified in the asset file
         "Unit": "pc",
         "identifier": "BlackHole_test",
-        "fixed_color": "0.3, 0.15, 0.9",
+        "FixedColor": "0.3, 0.15, 0.9",
         "Opacity": None,  # No opacity specified in the asset file
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -677,10 +679,9 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "pn.csv",
         "PolygonSides": "3",
-        "cmap": None,  # No colormap specified in the asset file
         "Unit": "pc",
         "identifier": "PlanetaryNebulae_test",
-        "fixed_color": "0.4, 0.4, 0.9",
+        "FixedColor": "0.4, 0.4, 0.9",
         "Opacity": "0.99",
         "colormap_enabled": "false",
         "parameter_options": [],  # No parameter options specified in the asset file
@@ -873,15 +874,14 @@ master_dictionary = {
                             "Path": "/Milky Way/Stars/Stars Orbits",
                             "Description": """Projected orbit of the PM_J13420-3415 around the Milky Way over the next 1 billion years.""" 
                             }
-                    }
-                    },
-        },
+                        }
+                    }, # end of objects
         "meta_name": "Star Orbits",
         "meta_description": """Projected star orbits for selected stars over the next 1 billion years. Census: 7 star orbits.""",
         "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)"
-    }
+    } # end of star_orbits
 
-}
+} # master_dictionary
 
 def data_info(data_name):
     """

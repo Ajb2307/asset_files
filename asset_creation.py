@@ -39,8 +39,8 @@ def import_local_modules(datainfo):
     if datainfo.get("texture") != None:
         print(f'local texture = asset.resource("{datainfo["texture"]}")')
     
-    if datainfo.get("cmap") != None:
-        print(f'local cmap = asset.resource("{datainfo["cmap"]}")')
+    if datainfo.get("ColorMapping") != None:
+        print(f'local cmap = asset.resource("{datainfo["ColorMapping"]["File"]}")')
 
     if datainfo.get("label_file") != None:
         print(f'local label = asset.resource("{datainfo["label_file"]}")')
@@ -88,8 +88,8 @@ def import_OpenSpace_modules(datainfo):
     if datainfo.get("texture") != None:
         print(f'local texture = texture_folder .. "{datainfo["texture"]}"')
     
-    if datainfo.get("cmap") != None:
-        print(f'local cmap = data_folder .. "{datainfo["cmap"]}"')
+    if datainfo.get("ColorMapping") != None:
+        print(f'local cmap = data_folder .. "{datainfo["ColorMapping"]["File"]}"')
 
     if datainfo.get("label_file") != None:
         print(f'local label = data_folder .. "{datainfo["label_file"]}"')
@@ -112,41 +112,40 @@ def import_local_star_modules(datainfo):
             print(f'local data_file = asset.resource("{datainfo["data_file"]}")')
             print(f'local core_texture = asset.resource("{datainfo["core_texture"]}")')
             print(f'local glare_texture = asset.resource("{datainfo["glare_texture"]}")')
-            print(f'local cmap = asset.resource("{datainfo["cmap"]}")')
-            print(f'local other_cmap = asset.resource("{datainfo["other_cmap"]}")')
+            print(f'local cmap = asset.resource("{datainfo["ColorMap"]}")')
+            print(f'local other_cmap = asset.resource("{datainfo["OtherDataColorMap"]}")')
         except KeyError:
-            raise KeyError(f'need to set data_file, core_texture, glare_texture, cmap, other_cmap in the datainfo dictionary')
-
+            raise KeyError(f'need to set data_file, core_texture, glare_texture, ColorMap, OtherDataColorMap in the datainfo dictionary')
 
         print()
 
 def set_color_parameters(datainfo):
     # if color map is provided 
-    if datainfo.get("cmap") != None:
+    if datainfo.get("ColorMapping") != None:
         print('    Coloring = {')
         # provided fix color if applicable
-        if datainfo.get("fixed_color") != None:
-            print('      FixedColor = {' + datainfo["fixed_color"] +'},')
+        if datainfo.get("FixedColor") != None:
+            print('      FixedColor = {' + datainfo["FixedColor"] +'},')
         print('      ColorMapping = {')
         print('        File = cmap,')
-        print('        Enabled = ' + datainfo["colormap_enabled"] + ',')
+        print('        Enabled = ' + datainfo["ColorMapping"]["Enabled"] + ',')
         print('        ParameterOptions = {')
         
         ## input color map parameters
-        for index, param in enumerate(datainfo["parameter_options"]):
+        for index, param in enumerate(datainfo["ColorMapping"]["ParameterOptions"]):
             # not the last parameter, add a comma
-            if index != len(datainfo["parameter_options"]) - 1:
-                print('          { Key = "' + param["key"] + '", Range = {' + param["range"] + '} },')
+            if index != len(datainfo["ColorMapping"]["ParameterOptions"]) - 1:
+                print('          { Key = "' + param["Key"] + '", Range = {' + param["Range"] + '} },')
             # last parameter, no comma
             else:
-                print('          { Key = "' + param["key"] + '", Range = {' + param["range"] + '} }')
+                print('          { Key = "' + param["Key"] + '", Range = {' + param["Range"] + '} }')
         print('        }')
         print('      }')
         print('    },')
     # if color map is not provided
-    elif datainfo.get("fixed_color") != None:
+    elif datainfo.get("FixedColor") != None:
         print('    Coloring = {')
-        print('      FixedColor = {' + datainfo["fixed_color"] +'}')
+        print('      FixedColor = {' + datainfo["FixedColor"] +'}')
         print('    },')
     
     # set opacity if provided

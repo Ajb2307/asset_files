@@ -5,4 +5,7 @@ from asset_dict import *
 keys = data_info_names()
 
 for key in keys:
-    write_asset(data_info(key))
+    try: 
+        write_asset(data_info(key))
+    except Exception as e:
+        print(f"Error writing asset for {key}: {e}")

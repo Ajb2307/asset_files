@@ -12,8 +12,8 @@ local SunOrbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "Sun Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the Sun around the Milky Way over the next 1 billion years.]]
   }
 }
@@ -29,8 +29,8 @@ local BarnardsOrbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "Barnards Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the Barnard's Star around the Milky Way over the next 1 billion years.]]
   }
 }
@@ -46,8 +46,8 @@ local KapteynsOrbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "Kapteyns Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the Kapteyn's Star around the Milky Way over the next 1 billion years.]]
   }
 }
@@ -63,8 +63,8 @@ local Lacaille9352Orbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "Lacaille 9352 Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the Lacaille9352 around the Milky Way over the next 1 billion years.]]
   }
 }
@@ -80,8 +80,8 @@ local LSR1826Orbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "LSR1826+3014 Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the LSR1826+3014 around the Milky Way over the next 1 billion years.]]
   }
 }
@@ -97,8 +97,8 @@ local LSRJ0822Orbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "LSRJ0822+1700 Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the LSRJ0822+1700 around the Milky Way over the next 1 billion years.]]
   }
 }
@@ -114,8 +114,8 @@ local PM_J13420Orbit = {
     Unit = "pc",
   },
   GUI = {
-    Path = "/Milky Way/Stars/Stars Orbits",
     Name = "PM_J13420-3415 Orbit -test",
+    Path = "/Milky Way/Stars/Stars Orbits",
     Description = [[Projected orbit of the PM_J13420-3415 around the Milky Way over the next 1 billion years.]]
   }
 }
