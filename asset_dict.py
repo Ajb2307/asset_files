@@ -4,7 +4,12 @@ master_dictionary = {
         "Enabled": "false",
         "filename": "2df",
         "asset_dir": "twodF",
-        "data_file": "2df.csv",
+        "data": {
+            "File": "2df.csv",
+            "Name": "2dF Speck Files",
+            "Identifier": "digitalUniverse_2dF_speck",
+            "Version": 3
+            },
         "local_modules": True,
         "Unit": "Mpc",
         "Texture": {
@@ -43,7 +48,12 @@ master_dictionary = {
         "Enabled": "false",
         "filename": "bd",
         "asset_dir": "brown_dwarf",
-        "data_file": "bd.csv",
+        "data": {
+            "File": "bd.csv",
+            "Name": "Brown Dwarf Speck Files",
+            "Identifier": "digitalUniverse_brown_dwarf_speck",
+            "Version": 1
+            },
         "Unit": "pc",
         "Texture": {
             "File": "point3.png",
@@ -93,7 +103,12 @@ master_dictionary = {
         "filename": "6df",
         "local_modules": True,
         "asset_dir": "sixdF",
-        "data_file": "6df.csv",
+        "data": {
+            "File": "6df.csv",
+            "Name": "6dF Speck Files",
+            "Identifier": "digitaluniverse_6dF_speck",
+            "Version": 3
+            },
         "Texture": {
             "File": "point3A.png",
             "Name": "Point Textures",
@@ -132,7 +147,12 @@ master_dictionary = {
         "Enabled": "true",
         "asset_dir": "ssds",
         "local_modules": True,
-        "data_file": "sdss.csv",
+        "data": {
+            "File": "sdss.csv",
+            "Name": "Sloan Digital Sky Survey Speck Files",
+            "Identifier": "digitaluniverse_sloandss_speck",
+            "Version": 4
+            },
         "Texture": {
             "File": "point3A.png",
             "Name": "Point Textures",
@@ -173,7 +193,12 @@ master_dictionary = {
         "asset_dir": "white_dwarfs",
         "local_modules": True,
         "Enabled": "false",
-        "data_file": "wd.csv",
+        "data": {
+            "File": "wd.csv",
+            "Name": "White Dwarf Speck Files",
+            "Identifier": "digitaluniverse_white_dwarfs_speck",
+            "Version": 1
+            },
         "Texture": {
             "File": "point3.png",
             "Name": "Point Textures",
@@ -206,7 +231,12 @@ master_dictionary = {
         "asset_dir": "exoplanets",
         "local_modules": True,
         "Enabled": "false",
-        "data_file": "expl.csv",
+        "data": {
+            "File": "expl.csv",
+            "Name": "Exoplanets Speck Files",
+            "Identifier": "digitaluniverse_exoplanets_speck",
+            "Version": 4
+            },
         "Texture": {
             "File": "target-blue.png",
             "Name": "Exoplanets Textures",
@@ -244,7 +274,12 @@ master_dictionary = {
         "renderable": "RenderablePointCloud",
         "filename": "expl_candidates",
         "asset_dir": "exoplanets",
-        "data_file": "expl_candidates.csv",
+        "data": {
+            "File": "expl_candidates.csv",
+            "Name": "Exoplanets Candidates Speck Files",
+            "Identifier": "digitaluniverse_exoplanets_candidates_speck",
+            "Version": 2
+            },
         "local_modules": True,
         "Enabled": "false",
         "Texture": {
@@ -284,7 +319,12 @@ master_dictionary = {
         "filename": "alt_star_labels",
         "asset_dir": "stars",
         "local_modules": True,
-        "data_file": "stars_labels.csv", 
+        "data": {
+            "File": "stars_labels.csv",
+            "Name": "Star Labels Alternate Speck Files",
+            "Identifier": "digitaluniverse_alternatestarlabels_speck",
+            "Version": 3
+            },
         "Identifier": "StarLabelsAlternate_test",
         "Enabled": "false",
         "colormap_enabled": "false",
@@ -313,7 +353,12 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "stars",
         "local_modules": True,
-        "data_file": "stars_labels.csv",  # No CSV file specified in the asset file
+        "data": {
+            "File": "stars_labels.csv",
+            "Name": "Star Labels Speck Files",
+            "Identifier": "digitaluniverse_starlabels_speck",
+            "Version": 3
+            },
         "Identifier": "StarLabels_test",
         "colormap_enabled": "false",
         "Labels": {
@@ -340,7 +385,12 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "open_cluster",
         "local_modules": True,
-        "data_file": "oc.csv",
+        "data": {
+            "File": "oc.csv",
+            "Name": "Open Cluster Speck Files",
+            "Identifier": "digitaluniverse_openclusters_speck",
+            "Version": 4
+            },
         "PolygonSides": "12",
         "Unit": "pc",
         "Identifier": "OpenStarClusters_test",
@@ -373,7 +423,12 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "pulsars",
         "local_modules": True,
-        "data_file": "pulsars.csv",
+        "data": {
+            "File": "pulsars.csv",
+            "Name": "Pulsars Speck Files",
+            "Identifier": "digitaluniverse_pulsars_speck",
+            "Version": 3
+            },
         "Unit": "Kpc",
         "PolygonSides": "4",
         "Opacity": "1.0",
@@ -409,7 +464,12 @@ master_dictionary = {
         "asset_dir": "supernova_remnants",
         "Enabled": "false",
         "local_modules": True,
-        "data_file": "snr.csv",
+        "data": {
+            "File": "snr.csv",
+            "Name": "Supernova Remnants Speck Files",
+            "Identifier": "digitaluniverse_supernovaremnants_speck",
+            "Version": 3
+            },
         "Unit": "pc",
         "PolygonSides": "7",
         "Opacity": "0.32",
@@ -445,7 +505,12 @@ master_dictionary = {
         "asset_dir": "h2_regions",
         "Enabled": "false",
         "local_modules": True,
-        "data_file": "h2.csv",
+        "data": {
+            "File": "h2.csv",
+            "Name": "HII Regions Speck Files",
+            "Identifier": "digitaluniverse_h2regions_speck",
+            "Version": 4
+            },
         "Unit": "pc",
         "PolygonSides": "6",
         "Opacity": "0.7",
@@ -481,7 +546,12 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "ob_association",
         "local_modules": True,
-        "data_file": "ob.csv",
+        "data": {
+            "File": "ob.csv",
+            "Name": "OB Associations Speck Files",
+            "Identifier": "digitaluniverse_obassociations_speck",
+            "Version": 4
+            },
         "PolygonSides": "7",
         "Unit": "pc",
         "Identifier": "OBAssociations_test",
@@ -521,7 +591,12 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "globular_clusters",
         "local_modules": True,
-        "data_file": "gc.csv",
+        "data": {
+            "File": "gc.csv",
+            "Name": "Globular Clusters Speck Files",
+            "Identifier": "digitaluniverse_globularclusters_speck",
+            "Version": 3
+            },
         "PolygonSides": "5",
         "Unit": "pc",
         "Identifier": "GlobularClusters_test",
@@ -552,7 +627,9 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "manga",
         "local_modules": True,
-        "data_file": "manga.csv",
+        "data": {
+            "File": "manga.csv",
+            }, # this data doesn't exist in OpenSpace yet
         "PolygonSides": "5",
         "Unit": "Mpc",
         "Identifier": "MaNGA_test",
@@ -574,7 +651,12 @@ master_dictionary = {
         "filename": "stars",
         "asset_dir": "stars",
         "local_modules": True,
-        "data_file": "stars.speck",
+        "data": {
+            "File": "stars.speck",
+            "Name": "Stars Speck Files",
+            "Identifier": "stars_du",
+            "Version": 6
+            },
         "Texture": {
             "Glare_File": "halo.png",
             "Core_File": "glare.png",
@@ -613,7 +695,12 @@ master_dictionary = {
         "Enabled": "true",
         "asset_dir": "quasars",
         "local_modules": True,
-        "data_file": "qso.csv",
+        "data": {
+            "File": "qso.csv",
+            "Name": "Quasars Speck Files",
+            "Identifier": "digitaluniverse_quasars_speck",
+            "Version": 3
+            },
         "Texture": {
             "File": "point3A.png",
             "Name": "Point Textures",
@@ -649,7 +736,9 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "black_holes",
         "local_modules": True,
-        "data_file": "bh.csv",
+        "data": {
+            "File": "bh.csv" # This data doesn't exist in OpenSpace yet
+            },
         "Texture": {
             "File": "point4.png",
             "Name": "Point Textures",
@@ -676,7 +765,12 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "planetary_nebulae",
         "local_modules": True,
-        "data_file": "pn.csv",
+        "data": {
+            "File": "pn.csv",
+            "Name": "Planetary Nebulae Speck Files",
+            "Identifier": "digitaluniverse_planetarynebulae_speck",
+            "Version": 3
+            },
         "PolygonSides": "3",
         "Unit": "pc",
         "Identifier": "PlanetaryNebulae_test",
@@ -714,8 +808,13 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "stellar_uncertainty",
         "local_modules": True,
-        "data_file": "star_uncertainty.speck",
-        "dat_file": "star_uncertainty.dat", 
+        "data": {
+            "File": "star_uncertainty.speck",
+            "NamesFile": "star_uncertainty.dat",
+            "Name": "Star Distance Uncertainty Files",
+            "Identifier": "digitaluniverse_star_uncertainty_data",
+            "Version": 1
+            }, 
         "Opacity": "0.8",
         "LineWidth": "5.0",
         "Labels": {
@@ -752,8 +851,13 @@ master_dictionary = {
         "filename": "constellations",
         "Enabled": "false",
         "asset_dir": "constellations",
-        "data_file": "constellation_lines.speck",
-        "dat_file": "constellations.dat",
+        "data": {
+            "File": "constellation_lines.speck",
+            "NamesFile": "constellations.dat",
+            "Name": "Constellation Files",
+            "Identifier": "digitaluniverse_constellations_data",
+            "Version": 3
+            },
         "Opacity": "0.3",
         "LineWidth": None,  # Not specified in the asset file
         "Labels": {
@@ -785,8 +889,13 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "constellations",
         "local_modules": True,
-        "data_file": "constellation_boundaries.dat",
-        "dat_file": "constellations.dat",
+        "data": {
+            "File": "constellation_boundaries.dat",
+            "NamesFile": "constellations.dat",
+            "Name": "Constellation Files",
+            "Identifier": "digitaluniverse_constellations_data",
+            "Version": 1
+            },
         "Identifier": "ConstellationBounds-test",
         "GUI": {
             "Name": "Constellation Boundaries-test",

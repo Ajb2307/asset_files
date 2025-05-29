@@ -3,7 +3,7 @@
 -- Set some parameters for OpenSpace settings
 local data_file = asset.resource("constellation_lines.speck")
 local label = asset.resource("constellation_lines.label")
-local dat = asset.resource("constellations.dat")
+local names = asset.resource("constellations.dat")
 
 local constellations_helper = asset.require("util/constellations_helper") 
 local zodiacs = {
@@ -36,7 +36,7 @@ local Object = {
   Renderable = {
     Type = "RenderableConstellationLines",
     File = data_file,
-    NamesFile = dat,
+    NamesFile = names,
     Unit = "pc",
     Enabled = false,
     Colors = { {0.6, 0.4, 0.4}, {0.8, 0.0, 0.0}, {0.0, 0.3, 0.8} },

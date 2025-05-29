@@ -32,9 +32,9 @@ def import_local_modules(datainfo):
     # importing local modules
     print('-- Set some parameters for OpenSpace settings')
     try:
-        print(f'local data_file = asset.resource("{datainfo["data_file"]}")')
+        print(f'local data_file = asset.resource("{datainfo["data"]["File"]}")')
     except KeyError:
-        raise KeyError(f'need to set data_file in the datainfo dictionary')
+        raise KeyError(f'need to set File in the datainfo["data] dictionary')
 
     if datainfo.get("Texture") != None:
         print(f'local texture = asset.resource("{datainfo["Texture"]["File"]}")')
@@ -46,11 +46,11 @@ def import_local_modules(datainfo):
         if datainfo["Labels"].get("File") != None:
             print(f'local label = asset.resource("{datainfo["Labels"]["File"]}")')
     
-    if datainfo.get("dat_file") != None:
-        print(f'local dat = asset.resource("{datainfo["dat_file"]}")')
+    if datainfo["data"].get("NamesFile") != None:
+        print(f'local names = asset.resource("{datainfo["data"]["NamesFile"]}")')
 
     if datainfo.get("data_folder") != None: # used for star orbits to iterate through multiple speck files
-        print(f'local folder = asset.resource("{datainfo["dat_file"]}")')
+        print(f'local folder = asset.resource("{datainfo["data_folder"]}")')
 
     print()
 
@@ -82,9 +82,9 @@ def import_OpenSpace_modules(datainfo):
         
     # assign variables for the OpenSpace modules
     try:
-        print(f'local data_file = data_folder .. "{datainfo["data_file"]}"')
+        print(f'local data_file = data_folder .. "{datainfo["data"]["File"]}"')
     except KeyError:
-        raise KeyError(f'need to set data_file in the datainfo dictionary')
+        raise KeyError(f'need to set File in the datainfo["data"] dictionary')
 
     if datainfo.get("texture") != None:
         print(f'local texture = texture_folder .. "{datainfo["texture"]}"')
@@ -96,8 +96,8 @@ def import_OpenSpace_modules(datainfo):
         if datainfo["Labels"].get("File") != None:
             print(f'local label = data_folder .. "{datainfo["label_file"]}"')
     
-    if datainfo.get("dat_file") != None:
-        print(f'local dat = data_folder .. "{datainfo["dat_file"]}"')
+    if datainfo["data"].get("NamesFile") != None:
+        print(f'local names = data_folder .. "{datainfo["data"]["NamesFile"]}"')
     
     print()
 
@@ -111,13 +111,13 @@ def import_local_star_modules(datainfo):
         # importing local modules
         print('-- Set some parameters for OpenSpace settings')
         try:
-            print(f'local data_file = asset.resource("{datainfo["data_file"]}")')
+            print(f'local data_file = asset.resource("{datainfo["data"]["File"]}")')
             print(f'local core_texture = asset.resource("{datainfo["Texture"]["Core_File"]}")')
             print(f'local glare_texture = asset.resource("{datainfo["Texture"]["Glare_File"]}")')
             print(f'local cmap = asset.resource("{datainfo["ColorMap"]}")')
             print(f'local other_cmap = asset.resource("{datainfo["OtherDataColorMap"]}")')
         except KeyError:
-            raise KeyError(f'need to set data_file, core_texture, glare_texture, ColorMap, OtherDataColorMap in the datainfo dictionary')
+            raise KeyError(f'need to set File in datainfo["data"], Core_File and GlareFile in datainfo["Texture"], and ColorMap and OtherDataColorMap in the datainfo dictionary')
 
         print()
 
@@ -268,7 +268,7 @@ def RenderableConstellationLines_Object(datainfo):
     print('    Type = "RenderableConstellationLines",')
     # input file settings
     print('    File = data_file,')
-    print('    NamesFile = dat,')
+    print('    NamesFile = names,')
     print('    Unit = "' + datainfo["Unit"] + '",')
     print('    Enabled = false,')
     # color, opacity, texture, size settings
@@ -844,7 +844,7 @@ def make_RenderableConstellationBounds_asset(datainfo):
         
         # input file settings
         print('    File = data_file,')
-        print('    NamesFile = dat,')
+        print('    NamesFile = names,')
         
         print('  },') # END OF RENDERABLE
         

@@ -3,14 +3,14 @@
 -- Set some parameters for OpenSpace settings
 local data_file = asset.resource("star_uncertainty.speck")
 local label = asset.resource("star_uncertainty.label")
-local dat = asset.resource("star_uncertainty.dat")
+local names = asset.resource("star_uncertainty.dat")
 
 local Object = {
   Identifier = "StarUncertainty_test",
   Renderable = {
     Type = "RenderableConstellationLines",
     File = data_file,
-    NamesFile = dat,
+    NamesFile = names,
     Unit = "pc",
     Enabled = false,
     LineWidth= 5.0,

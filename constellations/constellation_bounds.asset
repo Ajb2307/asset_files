@@ -2,7 +2,7 @@
 
 -- Set some parameters for OpenSpace settings
 local data_file = asset.resource("constellation_boundaries.dat")
-local dat = asset.resource("constellations.dat")
+local names = asset.resource("constellations.dat")
 
 local coreKernels = asset.require("spice/core")
 
@@ -12,7 +12,7 @@ local Object = {
     Type = "RenderableConstellationBounds",
     Enabled = false,
     File = data_file,
-    NamesFile = dat,
+    NamesFile = names,
   },
   Transform = {
     Rotation = {
