@@ -7,8 +7,13 @@ master_dictionary = {
         "data_file": "2df.csv",
         "local_modules": True,
         "Unit": "Mpc",
-        "texture": "point3A.png",
-        "identifier": "2dF_test",
+        "Texture": {
+            "File": "point3A.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
+        "Identifier": "2dF_test",
         "FixedColor": "1.0, 1.0, 1.0", # not used
         "Opacity": "1.0",
         "ColorMapping": {
@@ -19,10 +24,6 @@ master_dictionary = {
             },
         "ScaleExponent": "22.6",
         "MaxSize": "0.2",
-        "csv_labels": False,
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI":{ 
             "Name": "2dF Galaxies -test",
             "Path": "/Universe/Deep Sky Surveys",
@@ -35,9 +36,6 @@ master_dictionary = {
             },
         "meta_name": "2dF Galaxies",
         "author": "Brian Abbott (AMNH), Eric Gawiser (Rutgers U), Ally Baldelli (AMNH)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
     },
     'brown_dwarfs': {
         "renderable": "RenderablePointCloud",
@@ -47,8 +45,13 @@ master_dictionary = {
         "asset_dir": "brown_dwarf",
         "data_file": "bd.csv",
         "Unit": "pc",
-        "texture": "point3.png",
-        "identifier": "BrownDwarfs_test",
+        "Texture": {
+            "File": "point3.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
+        "Identifier": "BrownDwarfs_test",
         "FixedColor": "0.4, 0.0, 0.1",
         "Opacity": "1.0",
         "ColorMapping": {
@@ -58,10 +61,12 @@ master_dictionary = {
         },
         "ScaleExponent": "15.8",
         "MaxSize": "0.7",
-        "csv_labels": True,
-        "LabelColor": "0.6, 0.3, 0.4",
-        "LabelSize": "13.75",
-        "LabelMinMaxSize": "10, 100",
+        "Labels":{ 
+            "csv": True,
+            "Color": "0.6, 0.3, 0.4",
+            "Size": "13.75",
+            "MinMaxSize": "10, 100"
+            },
         "GUI": {
             "Name": "Brown Dwarfs -test",
             "Path": "/Milky Way/Substellar Objects",
@@ -80,10 +85,7 @@ master_dictionary = {
             2,196 objects."""
         },
         "meta_name": "Brown Dwarfs",
-        "author": "Brian Abbott, Zack Reeves, Jackie Faherty, Ally Baldelli (AMNH)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
+        "author": "Brian Abbott, Zack Reeves, Jackie Faherty, Ally Baldelli (AMNH)"
     },
     '6dF': {
         "renderable": "RenderablePointCloud",
@@ -92,9 +94,14 @@ master_dictionary = {
         "local_modules": True,
         "asset_dir": "sixdF",
         "data_file": "6df.csv",
-        "texture": "point3A.png",
+        "Texture": {
+            "File": "point3A.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
         "Unit": "Mpc",
-        "identifier": "6dF_test",
+        "Identifier": "6dF_test",
         "FixedColor": "1.0, 1.0, 0.0",
         "Opacity": "1.0",
         "ColorMapping": {
@@ -106,10 +113,6 @@ master_dictionary = {
             },
         "ScaleExponent": "22.5",
         "MaxSize": "0.2",
-        "csv_labels": False,
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "6dF Galaxies -test",
             "Path": "/Universe/Deep Sky Surveys",
@@ -122,9 +125,6 @@ master_dictionary = {
         },
         "meta_name": "6dF Galaxies",
         "author": "Brian Abbott, Ally Baldelli (AMNH)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
     },
     'SDSS': {
         "renderable": "RenderablePointCloud",
@@ -133,8 +133,13 @@ master_dictionary = {
         "asset_dir": "ssds",
         "local_modules": True,
         "data_file": "sdss.csv",
-        "texture": "point3A.png",
-        "identifier": "SloanDigitalSkySurvey_test",
+        "Texture": {
+            "File": "point3A.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
+        "Identifier": "SloanDigitalSkySurvey_test",
         "Unit": "Mpc",
         "FixedColor": "0.8, 0.8, 1.0",
         "Opacity": "0.8",
@@ -146,10 +151,6 @@ master_dictionary = {
         "ScaleExponent": "22.6",
         "MaxSize": "0.15",
         "FadeInDistances": "220.0, 650.0",
-        "csv_labels": False,
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "Sloan Digital Sky Survey -test",
             "Path": "/Universe/Deep Sky Surveys",
@@ -164,10 +165,7 @@ master_dictionary = {
             Census: 2,862,767 galaxies."""
         },
         "meta_name": "Sloan Digital Sky Survey Galaxies",
-        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH), Eric Gawiser (Rutgers)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
+        "author": "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH), Eric Gawiser (Rutgers)"
         },
     'white_dwarfs': {
         "renderable": "RenderablePointCloud",
@@ -176,19 +174,18 @@ master_dictionary = {
         "local_modules": True,
         "Enabled": "false",
         "data_file": "wd.csv",
-        "texture": "point3.png",
-        "identifier": "WhiteDwarfs_test",
+        "Texture": {
+            "File": "point3.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
+        "Identifier": "WhiteDwarfs_test",
         "Unit": "pc",
         "FixedColor": "1.0, 1.0, 1.0",
         "Opacity": "1.0",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "15.5",
         "MaxSize": "0.7",
-        "csv_labels": False,
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "White Dwarfs- test",
             "Path": "/Milky Way/Stellar Remnants",
@@ -201,10 +198,7 @@ master_dictionary = {
             192,613 white dwarfs."""
         },
         "meta_name": "White Dwarfs",
-        "author": "Zack Reeves, Brian Abbott, Ally Baldelli (AMNH)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
+        "author": "Zack Reeves, Brian Abbott, Ally Baldelli (AMNH)"
     },
     'exoplanets': {
         "renderable": "RenderablePointCloud",
@@ -213,19 +207,24 @@ master_dictionary = {
         "local_modules": True,
         "Enabled": "false",
         "data_file": "expl.csv",
-        "texture": "target-blue.png",
+        "Texture": {
+            "File": "target-blue.png",
+            "Name": "Exoplanets Textures",
+            "Identifier": "digitaluniverse_exoplanets_textures",
+            "Version": 1
+            },
         "Unit": "pc",
-        "identifier": "Exoplanets_test",
+        "Identifier": "Exoplanets_test",
         "FixedColor": None,  # No fixed color specified in the asset file
         "Opacity": "1.0",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "16.9",
         "MaxSize": "2.8",
-        "csv_labels": True,
-        "LabelColor": "0.3, 0.3, 0.8",
-        "LabelSize": "13.75",
-        "LabelMinMaxSize": "10, 100",
+        "Labels": {
+            "csv": True,
+            "Color": "0.3, 0.3, 0.8",
+            "Size": "13.75",
+            "MinMaxSize": "10, 100"
+            },
         "GUI": {
             "Name": "Exoplanets-test",
             "Path": "/Milky Way/Exoplanets",
@@ -248,8 +247,13 @@ master_dictionary = {
         "data_file": "expl_candidates.csv",
         "local_modules": True,
         "Enabled": "false",
-        "texture": "halo.png",
-        "identifier": "PlanetaryCandidates_test",
+        "Texture": {
+            "File": "halo.png",
+            "Name": "Exoplanets Candidates Textures",
+            "Identifier": "digitaluniverse_exoplanets_candidates_textures",
+            "Version": 1
+            },
+        "Identifier": "PlanetaryCandidates_test",
         "Unit": "pc",
         "FixedColor": "1.0, 1.0, 0.0",
         "Opacity": "0.99",
@@ -260,10 +264,6 @@ master_dictionary = {
             },
         "ScaleExponent": "17.8",
         "MaxSize": "1.0",
-        "csv_labels": False,
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "Exoplanetary Candidates -test",
             "Path": "/Milky Way/Exoplanets",
@@ -284,15 +284,17 @@ master_dictionary = {
         "filename": "alt_star_labels",
         "asset_dir": "stars",
         "local_modules": True,
-        "data_file": "stars_labels.csv",  # No CSV file specified in the asset file
-        "identifier": "StarLabelsAlternate_test",
+        "data_file": "stars_labels.csv", 
+        "Identifier": "StarLabelsAlternate_test",
         "Enabled": "false",
         "colormap_enabled": "false",
-        "csv_labels": True,
-        "label_column_name": "alt_label",
-        "LabelColor": "0.4, 0.4, 0.4",
-        "LabelSize": "14.4",
-        "LabelMinMaxSize": "15, 20",
+        "Labels": {
+            "csv": True,
+            "column": "alt_label",
+            "Color": "0.4, 0.4, 0.4",
+            "Size": "14.4",
+            "MinMaxSize": "15, 20"
+            },  
         "Unit": "pc",
         "Opacity": "0.65",
         "GUI": {
@@ -312,13 +314,15 @@ master_dictionary = {
         "asset_dir": "stars",
         "local_modules": True,
         "data_file": "stars_labels.csv",  # No CSV file specified in the asset file
-        "identifier": "StarLabels_test",
+        "Identifier": "StarLabels_test",
         "colormap_enabled": "false",
-        "csv_labels": True,
-        "label_column_name": "label",
-        "LabelColor": "0.4, 0.4, 0.4",
-        "LabelSize": "14.4",
-        "LabelMinMaxSize": "6, 50",
+        "Labels": {
+            "csv": True,
+            "column": "label",
+            "Color": "0.4, 0.4, 0.4",
+            "Size": "14.4",
+            "MinMaxSize": "6, 50"
+            },
         "Unit": "pc",
         "Opacity": "0.65",
         "GUI": {
@@ -339,17 +343,17 @@ master_dictionary = {
         "data_file": "oc.csv",
         "PolygonSides": "12",
         "Unit": "pc",
-        "identifier": "OpenStarClusters_test",
+        "Identifier": "OpenStarClusters_test",
         "FixedColor": "0.13, 0.99, 0.50",
         "Opacity": "0.9",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "17.8",
         "MaxSize": "23.0",
-        "csv_labels": True,
-        "LabelColor": "0.0, 0.36, 0.14",
-        "LabelSize": "15.5",
-        "LabelMinMaxSize": "4, 30",
+        "Labels": {
+            "csv": True,
+            "Color": "0.0, 0.36, 0.14",
+            "Size": "15.5",
+            "MinMaxSize": "4, 30"
+            },
         "GUI": {
             "Name": "Open Star Clusters -test",
             "Path": "/Milky Way/Star Clusters",
@@ -373,16 +377,16 @@ master_dictionary = {
         "Unit": "Kpc",
         "PolygonSides": "4",
         "Opacity": "1.0",
-        "identifier": "Pulsars_test",
+        "Identifier": "Pulsars_test",
         "FixedColor": "0.7, 0.0, 0.0",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.1",
         "MaxSize": "19.0",
-        "csv_labels": True,
-        "LabelColor": "0.75, 0.21, 0.21",
-        "LabelSize": "15.27",
-        "LabelMinMaxSize": "4, 20",
+        "Labels": {
+            "csv": True,
+            "Color": "0.75, 0.21, 0.21",
+            "Size": "15.27",
+            "MinMaxSize": "4, 20"
+            },
         "GUI": {
             "Name": "Pulsars-test",
             "Path": "/Milky Way/Stellar Remnants",
@@ -409,16 +413,16 @@ master_dictionary = {
         "Unit": "pc",
         "PolygonSides": "7",
         "Opacity": "0.32",
-        "identifier": "SupernovaRemnants_test",
+        "Identifier": "SupernovaRemnants_test",
         "FixedColor": "1.0, 0.5, 0.0",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.4",
         "MaxSize": "19.0",
-        "csv_labels": True,
-        "LabelColor": "0.51, 0.40, 0.04",
-        "LabelSize": "16.0",
-        "LabelMinMaxSize": "4, 100",
+        "Labels": {
+            "csv": True,
+            "Color": "0.51, 0.40, 0.04",
+            "Size": "16.0",
+            "MinMaxSize": "4, 100"
+            },
         "GUI": {
             "Name": "Supernova Remnants-test",
             "Path": "/Milky Way/Nebulae",
@@ -445,16 +449,16 @@ master_dictionary = {
         "Unit": "pc",
         "PolygonSides": "6",
         "Opacity": "0.7",
-        "identifier": "HIIRegions_test",
+        "Identifier": "HIIRegions_test",
         "FixedColor": "0.0, 0.5, 1.0",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.5",
         "MaxSize": "8.0",
-        "csv_labels": True,
-        "LabelColor": "0.5, 0.5, 0.5",
-        "LabelSize": "16.24",
-        "LabelMinMaxSize": "4, 20",
+        "Labels": {
+            "csv": True,
+            "Color": "0.5, 0.5, 0.5",
+            "Size": "16.24",
+            "MinMaxSize": "4, 20"
+            },
         "GUI": {
             "Name": "HII Regions -test",
             "Path": "/Milky Way/Nebulae",
@@ -480,7 +484,7 @@ master_dictionary = {
         "data_file": "ob.csv",
         "PolygonSides": "7",
         "Unit": "pc",
-        "identifier": "OBAssociations_test",
+        "Identifier": "OBAssociations_test",
         "FixedColor": None,  # No fixed color specified in the asset file
         "Opacity": "0.7",
         "ColorMapping": {
@@ -491,10 +495,12 @@ master_dictionary = {
         "ScaleExponent": "16.9",
         "MaxSize": "17",
         "SizeMapping_ParameterOptions": "diameter",
-        "csv_labels": True,
-        "LabelColor": "0.4, 0.5, 1.0",
-        "LabelSize": "16.24",
-        "LabelMinMaxSize": "4, 25",
+        "Labels": {
+            "csv": True,
+            "Color": "0.4, 0.5, 1.0",
+            "Size": "16.24",
+            "MinMaxSize": "4, 25"
+            },
         "GUI": {
             "Name": "OB Associations-test",
             "Path": "/Milky Way/Star Clusters",
@@ -518,17 +524,17 @@ master_dictionary = {
         "data_file": "gc.csv",
         "PolygonSides": "5",
         "Unit": "pc",
-        "identifier": "GlobularClusters_test",
+        "Identifier": "GlobularClusters_test",
         "FixedColor": "0.8, 0.8, 0.0",
         "Opacity": "0.65",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.6",
         "MaxSize": "13.0",
-        "csv_labels": True,
-        "LabelColor": "0.36, 0.36, 0.0",
-        "LabelSize": "16.7",
-        "LabelMinMaxSize": "4, 20",
+        "Labels": {
+            "csv": True,
+            "Color": "0.36, 0.36, 0.0",
+            "Size": "16.7",
+            "MinMaxSize": "4, 20"
+            },
         "GUI": {
             "Name": "Globular Clusters-test",
             "Path": "/Milky Way/Star Clusters",
@@ -549,18 +555,12 @@ master_dictionary = {
         "data_file": "manga.csv",
         "PolygonSides": "5",
         "Unit": "Mpc",
-        "identifier": "MaNGA_test",
+        "Identifier": "MaNGA_test",
         "FixedColor": "0.8, 0.8, 0.0",
         "Opacity": "0.8",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "22.6",
         "MaxSize": "0.15",
         "FadeInDistances": "220.0, 650.0",
-        "csv_labels": False,  # No labels specified in the asset file
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "MaNGA Nearby Galaxy Catalog -test",
             "Path": "/Universe/Deep Sky Surveys",
@@ -575,11 +575,16 @@ master_dictionary = {
         "asset_dir": "stars",
         "local_modules": True,
         "data_file": "stars.speck",
-        "core_texture": "glare.png",
-        "glare_texture": "halo.png",
+        "Texture": {
+            "Glare_File": "halo.png",
+            "Core_File": "glare.png",
+            "Name": "Stars Textures",
+            "Identifier": "stars_textures",
+            "Version": 1
+            },
         "ColorMap": "colorbv.cmap",
         "OtherDataColorMap": "viridis.cmap",
-        "identifier": "Stars_test",
+        "Identifier": "Stars_test",
         "Bv_column": "colorb_v",
         "Luminance_column": "lum",
         "AbsoluteMagnitude_column": "absmag",
@@ -609,9 +614,14 @@ master_dictionary = {
         "asset_dir": "quasars",
         "local_modules": True,
         "data_file": "qso.csv",
-        "texture": "point3A.png",
+        "Texture": {
+            "File": "point3A.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
         "Unit": "Mpc",
-        "identifier": "Quasars_test",
+        "Identifier": "Quasars_test",
         "FixedColor": "0.85, 0.35, 0.18",
         "Opacity": "0.95",
         "ColorMapping": {
@@ -622,10 +632,6 @@ master_dictionary = {
         "ScaleExponent": "23.5",
         "MaxSize": "0.3",
         "FadeInDistances": "1000.0, 10000.0",
-        "csv_labels": False,  # No labels specified in the asset file
-        "LabelColor"  # No labels specified in the asset file: None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "Quasars-test",
             "Path": "/Universe/Deep Sky Surveys",
@@ -635,10 +641,7 @@ master_dictionary = {
             high-energy light that we see to great distances. Census: 755,850 quasars."""
             },
         "meta_name": "Quasars",
-        "author": "Brian Abbott, Sohum Udani, Ally Baldelli (AMNH)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
+        "author": "Brian Abbott, Sohum Udani, Ally Baldelli (AMNH)"
     },
     'black_holes': {
         "renderable": "RenderablePointCloud",
@@ -647,29 +650,25 @@ master_dictionary = {
         "asset_dir": "black_holes",
         "local_modules": True,
         "data_file": "bh.csv",
-        "texture": "point4.png",
+        "Texture": {
+            "File": "point4.png",
+            "Name": "Point Textures",
+            "Identifier": "digitaluniverse_point_textures",
+            "Version": 1
+            },
         "Unit": "pc",
-        "identifier": "BlackHole_test",
+        "Identifier": "BlackHole_test",
         "FixedColor": "0.3, 0.15, 0.9",
         "Opacity": None,  # No opacity specified in the asset file
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "19.0",
         "MaxSize": "13.0",
-        "csv_labels": False,  # No labels specified in the asset file
-        "LabelColor": None,
-        "LabelSize": None,
-        "LabelMinMaxSize": None,
         "GUI": {
             "Name": "Black Hole- test",
             "Path": "/Milky Way/Stellar Remnants",
             "Description": """BlackCAT: A catalogue of stellar-mass black holes in X-ray transients"""
             },
         "meta_name": "Black Holes",
-        "author": "Zack Reeves, Brian Abbott,  Ally Baldelli (AMNH)",
-        "textures_folder_Name": "Point Textures",
-        "textures_folder_Identifier": "digitaluniverse_point_textures",
-        "textures_folder_Version": 1
+        "author": "Zack Reeves, Brian Abbott,  Ally Baldelli (AMNH)"
         },
     'planetary_nebulae': {
         "renderable": "RenderablePolygonCloud",
@@ -680,17 +679,17 @@ master_dictionary = {
         "data_file": "pn.csv",
         "PolygonSides": "3",
         "Unit": "pc",
-        "identifier": "PlanetaryNebulae_test",
+        "Identifier": "PlanetaryNebulae_test",
         "FixedColor": "0.4, 0.4, 0.9",
         "Opacity": "0.99",
-        "colormap_enabled": "false",
-        "parameter_options": [],  # No parameter options specified in the asset file
         "ScaleExponent": "18.2",
         "MaxSize": "19.0",
-        "csv_labels": True,
-        "LabelColor": "0.35, 0.35, 0.60",
-        "LabelSize": "16.24",
-        "LabelMinMaxSize": "4, 25",
+        "Labels": {
+            "csv": True,
+            "Color": "0.35, 0.35, 0.60",
+            "Size": "16.24",
+            "MinMaxSize": "4, 25"
+            },
         "GUI": {
             "Name": "Planetary Nebulae -test",
             "Path": "/Milky Way/Nebulae",
@@ -711,18 +710,20 @@ master_dictionary = {
     'star_uncertainty': {
         "renderable": "RenderableConstellationLines",
         "filename": "stellar_uncertainty",
-        "identifier": "StarUncertainty_test",
+        "Identifier": "StarUncertainty_test",
         "Enabled": "false",
         "asset_dir": "stellar_uncertainty",
         "local_modules": True,
         "data_file": "star_uncertainty.speck",
-        "label_file": "star_uncertainty.label",
         "dat_file": "star_uncertainty.dat", 
         "Opacity": "0.8",
         "LineWidth": "5.0",
-        "LabelColor": "0.6, 0.6, 1.0",
-        "LabelSize": "14.1",
-        "LabelMinMaxSize": "8, 170",
+        "Labels": {
+            "File": "star_uncertainty.label",
+            "Color": "0.6, 0.6, 1.0",
+            "Size": "14.1",
+            "MinMaxSize": "8, 170"
+            },
         "Unit": "pc",
         "DimInAtmosphere": 'true',
         "Colors":  "{1.0, 1.0, 0.0}, {0.0, 0.8, 1.0}, {0.957, 0.51, 0.10}",
@@ -744,7 +745,7 @@ master_dictionary = {
     },
     'constellations': {
         "renderable": "RenderableConstellationLines",
-        "identifier": "Constellations_test",
+        "Identifier": "Constellations_test",
         "zodiacs": True,
         "constellation_actions": True,
         "local_modules": True,
@@ -752,14 +753,16 @@ master_dictionary = {
         "Enabled": "false",
         "asset_dir": "constellations",
         "data_file": "constellation_lines.speck",
-        "label_file": "constellation_lines.label",
         "dat_file": "constellations.dat",
         "Opacity": "0.3",
         "LineWidth": None,  # Not specified in the asset file
-        "csv_labels": False,  # No CSV labels specified in the asset file
-        "LabelColor": "0.8, 0.8, 0.8",
-        "LabelSize": "14.5",
-        "LabelMinMaxSize": "8, 170",
+        "Labels": {
+            "csv": False,  
+            "File": "constellation_lines.label",
+            "Color": "0.8, 0.8, 0.8",
+            "Size": "14.5",
+            "MinMaxSize": "8, 170"
+            },
         "Unit": "pc",
         "DimInAtmosphere": 'true',
         "Colors": '{0.6, 0.4, 0.4}, {0.8, 0.0, 0.0}, {0.0, 0.3, 0.8}' ,
@@ -784,7 +787,7 @@ master_dictionary = {
         "local_modules": True,
         "data_file": "constellation_boundaries.dat",
         "dat_file": "constellations.dat",
-        "identifier": "ConstellationBounds-test",
+        "Identifier": "ConstellationBounds-test",
         "GUI": {
             "Name": "Constellation Boundaries-test",
             "Path": "/Milky Way/Constellations",
@@ -806,7 +809,7 @@ master_dictionary = {
         "Unit": "pc",
         "Opacity": "1.0",
         "objects": {"SunOrbit": {
-                        "identifier": "SunOrbit_test",
+                        "Identifier": "SunOrbit_test",
                         "speck_file": "starorbits-Sun.speck",
                         "MeshColor": "1.0, 0.65, 0.0",
                         "GUI": {
@@ -816,7 +819,7 @@ master_dictionary = {
                             }
                         },
                     "BarnardsOrbit":  {
-                        "identifier": "BarnardsOrbit_test",
+                        "Identifier": "BarnardsOrbit_test",
                         "speck_file": "starorbits-BarnardsStar.speck",
                         "MeshColor": "0.39, 0.58, 0.93",
                         "GUI": {
@@ -826,7 +829,7 @@ master_dictionary = {
                             }
                         },
                     "KapteynsOrbit":  {
-                        "identifier": "KapteynsOrbit_test",
+                        "Identifier": "KapteynsOrbit_test",
                         "speck_file": "starorbits-KapteynsStar.speck",
                         "MeshColor": "0.6, 0.6, 0.6",
                         "GUI": {
@@ -836,7 +839,7 @@ master_dictionary = {
                             } 
                         },
                     "Lacaille9352Orbit":  {
-                        "identifier": "Lacaille9352Orbit_test",
+                        "Identifier": "Lacaille9352Orbit_test",
                         "speck_file": "starorbits-Lacaille9352.speck",
                         "MeshColor": "0.58, 0.0, 0.83",
                         "GUI": {
@@ -846,7 +849,7 @@ master_dictionary = {
                             }
                         }, 
                     "LSR1826Orbit":  {
-                        "identifier": "LSR1826Orbit_test",
+                        "Identifier": "LSR1826Orbit_test",
                         "speck_file": "starorbits-LSR1826+3014.speck",
                         "MeshColor": "0.0, 0.39, 0.0",
                         "GUI": {
@@ -856,7 +859,7 @@ master_dictionary = {
                             }
                         },
                     "LSRJ0822Orbit":  {
-                        "identifier": "LSRJ0822Orbit_test",
+                        "Identifier": "LSRJ0822Orbit_test",
                         "speck_file": "starorbits-LSRJ0822+1700.speck",
                         "MeshColor": "0.5, 1.0, 0.0",
                         "GUI": {
@@ -866,7 +869,7 @@ master_dictionary = {
                             }
                         },
                     "PM_J13420Orbit":  {
-                        "identifier": "PM_J13420Orbit_test",
+                        "Identifier": "PM_J13420Orbit_test",
                         "speck_file": "starorbits-PM_J13420-3415.speck",
                         "MeshColor": "0.70, 0.13, 0.13",
                         "GUI": {

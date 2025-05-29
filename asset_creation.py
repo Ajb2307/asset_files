@@ -36,14 +36,15 @@ def import_local_modules(datainfo):
     except KeyError:
         raise KeyError(f'need to set data_file in the datainfo dictionary')
 
-    if datainfo.get("texture") != None:
-        print(f'local texture = asset.resource("{datainfo["texture"]}")')
+    if datainfo.get("Texture") != None:
+        print(f'local texture = asset.resource("{datainfo["Texture"]["File"]}")')
     
     if datainfo.get("ColorMapping") != None:
         print(f'local cmap = asset.resource("{datainfo["ColorMapping"]["File"]}")')
 
-    if datainfo.get("label_file") != None:
-        print(f'local label = asset.resource("{datainfo["label_file"]}")')
+    if datainfo.get("Labels") != None:
+        if datainfo["Labels"].get("File") != None:
+            print(f'local label = asset.resource("{datainfo["Labels"]["File"]}")')
     
     if datainfo.get("dat_file") != None:
         print(f'local dat = asset.resource("{datainfo["dat_file"]}")')
@@ -67,17 +68,17 @@ def import_OpenSpace_modules(datainfo):
         raise KeyError(f'need to set data_folder_Name, data_folder_Version, and data_folder_Identifier \
                         in the datainfo dictionary when local_modules = False')
 
-    if datainfo.get("texture") != None: # if texture is needed its found in this folder
+    if datainfo.get("Texture") != None: # if texture is needed its found in this folder
         try:
             print('local texture_folder = asset.resource({')
-            print(f'  Name = "{datainfo["textures_folder_Name"]}",')
+            print(f'  Name = "{datainfo["Texture"]["Name"]}",')
             print( '  Type = "HttpSynchronization",')
-            print(f'  Identifier = "{datainfo["textures_folder_Identifier"]}",')
-            print(f'  Version = {datainfo["textures_folder_Version"]}')
+            print(f'  Identifier = "{datainfo["Texture"]["Identifier"]}",')
+            print(f'  Version = {datainfo["Texture"]["Version"]}')
             print('})')
         except KeyError:
-            raise KeyError(f'need to set textures_folder_Name, textures_folder_Version, and textures_folder_Identifier \
-                           in the datainfo dictionary when local_modules = False and texture is provided')
+            raise KeyError(f'need to set Name, Identifier, and Version \
+                           in the datainfo["Texture"] dictionary when local_modules = False and texture is provided')
         
     # assign variables for the OpenSpace modules
     try:
@@ -91,8 +92,9 @@ def import_OpenSpace_modules(datainfo):
     if datainfo.get("ColorMapping") != None:
         print(f'local cmap = data_folder .. "{datainfo["ColorMapping"]["File"]}"')
 
-    if datainfo.get("label_file") != None:
-        print(f'local label = data_folder .. "{datainfo["label_file"]}"')
+    if datainfo.get("Labels") != None:
+        if datainfo["Labels"].get("File") != None:
+            print(f'local label = data_folder .. "{datainfo["label_file"]}"')
     
     if datainfo.get("dat_file") != None:
         print(f'local dat = data_folder .. "{datainfo["dat_file"]}"')
@@ -110,8 +112,8 @@ def import_local_star_modules(datainfo):
         print('-- Set some parameters for OpenSpace settings')
         try:
             print(f'local data_file = asset.resource("{datainfo["data_file"]}")')
-            print(f'local core_texture = asset.resource("{datainfo["core_texture"]}")')
-            print(f'local glare_texture = asset.resource("{datainfo["glare_texture"]}")')
+            print(f'local core_texture = asset.resource("{datainfo["Texture"]["Core_File"]}")')
+            print(f'local glare_texture = asset.resource("{datainfo["Texture"]["Glare_File"]}")')
             print(f'local cmap = asset.resource("{datainfo["ColorMap"]}")')
             print(f'local other_cmap = asset.resource("{datainfo["OtherDataColorMap"]}")')
         except KeyError:
@@ -174,37 +176,39 @@ def set_fading_parameters(datainfo):
         print('    },')
 
 def set_label_parameters(datainfo):
-    ## input label settings if csv_labels = True
-    if datainfo.get("csv_labels") == True:
+    
+    if datainfo.get("Labels") != None:
+        ## input label settings if csv_labels = True
+        if datainfo["Labels"].get("csv") == True:
 
-        # check if label column name is provided
-        if datainfo.get("label_column") != None:
-            label_column = datainfo["label_column"]
-        else:
-            label_column = "label"
-        
-        print('    DataMapping = {')
-        print('      Name = "' + label_column + '" },')
+            # check if label column name is provided
+            if datainfo["Labels"].get("column") != None:
+                label_column = datainfo["Labels"]["column"]
+            else:
+                label_column = "label"
+            
+            print('    DataMapping = {')
+            print('      Name = "' + label_column + '" },')
 
-    if datainfo.get("csv_labels") == True or datainfo.get("label_file") != None:
-        # check used in label file or csv
-        try:
-            print('    Labels = {')
-        
-            if datainfo.get("label_file") != None: # if label file is provided
-                print('      File = label,')
+        if datainfo["Labels"].get("csv") == True or datainfo["Labels"].get("File") != None:
+            # check used in label file or csv
+            try:
+                print('    Labels = {')
+            
+                if datainfo["Labels"].get("File") != None: # if label file is provided
+                    print('      File = label,')
 
-            if datainfo.get("LabelEnabled") == True:
-                print('      Enabled = true,')
+                if datainfo["Labels"].get("Enabled") == True:
+                    print('      Enabled = true,')
 
-            print('      Color = { ' + datainfo["LabelColor"] + ' },')
-            print('      Size = ' + datainfo["LabelSize"] + ',')
-            print('      MinMaxSize = { ' + datainfo["LabelMinMaxSize"] + ' },')
-            print('      Unit = "' + datainfo["Unit"] + '"')
-            print('    }')
-        except KeyError:
-            raise KeyError(f'need to set LabelColor, LabelSize, and LabelMinMaxSize in the datainfo dictionary if csv_labels = True')
-        
+                print('      Color = { ' + datainfo["Labels"]["Color"] + ' },')
+                print('      Size = ' + datainfo["Labels"]["Size"] + ',')
+                print('      MinMaxSize = { ' + datainfo["Labels"]["MinMaxSize"] + ' },')
+                print('      Unit = "' + datainfo["Unit"] + '"')
+                print('    }')
+            except KeyError:
+                raise KeyError(f'need to set Color, Size, and MinMaxSize in the datainfo["Labels"] dictionary')
+            
     
 
 def define_GUI(datainfo):
@@ -258,7 +262,7 @@ def initialize_asset_functions(Object = "Object"):
 def RenderableConstellationLines_Object(datainfo):
     # START OF OBJECT 
     print('local Object = {')
-    print('  Identifier = "' + datainfo['identifier'] + '",')
+    print('  Identifier = "' + datainfo["Identifier"] + '",')
     # START OF RENDERABLE
     print('  Renderable = {')
     print('    Type = "RenderableConstellationLines",')
@@ -292,7 +296,7 @@ def RenderableDUMeshes_Object(datainfo, object):
     
     # variables from object dictionary
     try:
-        print('  Identifier = "' + object_dict['identifier'] + '",')
+        print('  Identifier = "' + object_dict["Identifier"] + '",')
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    Type = "RenderableDUMeshes",')
@@ -472,7 +476,7 @@ def make_RenderablePointCloud_asset(datainfo):
 
         # START OF OBJECT 
         print('local Object = {')
-        print('  Identifier = "' + datainfo['identifier'] + '",')
+        print('  Identifier = "' + datainfo["Identifier"] + '",')
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    Type = "RenderablePointCloud",')
@@ -532,7 +536,7 @@ def make_star_labels_asset(datainfo):
     outpath = asset_outpath(datainfo)
 
     # set label enabled to true
-    datainfo["LabelEnabled"] = True
+    datainfo["Labels"]["Enabled"] = True
 
     with open(outpath, 'wt') as asset:
         # Switch stdout to the file
@@ -546,7 +550,7 @@ def make_star_labels_asset(datainfo):
 
         # START OF OBJECT 
         print('local Object = {')
-        print('  Identifier = "' + datainfo['identifier'] + '",')
+        print('  Identifier = "' + datainfo["Identifier"] + '",')
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    File = data_file,')
@@ -614,7 +618,7 @@ def make_RenderablePolygonCloud_asset(datainfo):
 
         # START OF OBJECT 
         print('local Object = {')
-        print('  Identifier = "' + datainfo['identifier'] + '",')
+        print('  Identifier = "' + datainfo["Identifier"] + '",')
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    Type = "RenderablePolygonCloud",')
@@ -684,7 +688,7 @@ def make_RenderableStars_asset(datainfo):
 
         # START OF OBJECT 
         print('local Object = {')
-        print('  Identifier = "' + datainfo['identifier'] + '",')
+        print('  Identifier = "' + datainfo["Identifier"] + '",')
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    Type = "RenderableStars",')
@@ -832,7 +836,7 @@ def make_RenderableConstellationBounds_asset(datainfo):
 
         # START OF OBJECT 
         print('local Object = {')
-        print('  Identifier = "' + datainfo['identifier'] + '",')
+        print('  Identifier = "' + datainfo["Identifier"] + '",')
         # START OF RENDERABLE
         print('  Renderable = {')
         print('    Type = "RenderableConstellationBounds",')
