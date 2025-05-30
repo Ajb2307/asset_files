@@ -34,7 +34,7 @@ def import_local_modules(datainfo):
     try:
         print(f'local data_file = asset.resource("{datainfo["data"]["File"]}")')
     except KeyError:
-        raise KeyError(f'need to set File in the datainfo["data] dictionary')
+        raise KeyError(f'need to set File in the datainfo["data"] dictionary')
 
     if datainfo.get("Texture") != None:
         print(f'local texture = asset.resource("{datainfo["Texture"]["File"]}")')
@@ -65,8 +65,8 @@ def import_OpenSpace_modules(datainfo):
         print(f'  Version = {datainfo["data"]["Version"]}')
         print('})')
     except KeyError:
-        raise KeyError(f'need to set data_folder_Name, data_folder_Version, and data_folder_Identifier \
-                        in the datainfo dictionary when local_modules = False')
+        raise KeyError(f'need to set Name, Version, and Identifier \
+                        in the datainfo["data"] dictionary when local_modules = False')
 
     if datainfo.get("Texture") != None: # if texture is needed its found in this folder
         try:
@@ -78,7 +78,8 @@ def import_OpenSpace_modules(datainfo):
             print('})')
         except KeyError:
             raise KeyError(f'need to set Name, Identifier, and Version \
-                           in the datainfo["Texture"] dictionary when local_modules = False and texture is provided')
+                           in the datainfo["Texture"] dictionary when local_modules = False \
+                           and texture is provided')
         
     if datainfo.get("ColorMapping") != None: # if texture is needed its found in this folder
         try:
@@ -90,7 +91,8 @@ def import_OpenSpace_modules(datainfo):
             print('})')
         except KeyError:
             raise KeyError(f'need to set Name, Identifier, and Version \
-                           in the datainfo["ColorMapping"] dictionary when local_modules = False and texture is provided')
+                           in the datainfo["ColorMapping"] dictionary when local_modules = False \
+                           and texture is provided')
         
     # assign variables for the OpenSpace modules
     try:
@@ -129,7 +131,7 @@ def import_local_star_modules(datainfo):
             print(f'local cmap = asset.resource("{datainfo["ColorMap"]["ColorMap"]}")')
             print(f'local other_cmap = asset.resource("{datainfo["ColorMap"]["OtherDataColorMap"]}")')
         except KeyError:
-            raise KeyError(f'need to set File in datainfo["data"], Core and Glare in datainfo["Texture"], and ColorMap and OtherDataColorMap in the datainfo dictionary')
+            raise KeyError(f'need to set File in datainfo["data"], Core and Glare in datainfo["Texture"], and ColorMap and OtherDataColorMap in datainfo')
 
         print()
 
@@ -996,4 +998,5 @@ def write_asset(datainfo):
     elif datainfo["renderable"] == "RenderableConstellationBounds":
         make_RenderableConstellationBounds_asset(datainfo)
     else:
-        raise ValueError(f'Unknown renderable type: {datainfo["renderable"]}')
+        raise ValueError(f'Unknown renderable type: {datainfo["renderable"]} \n \
+                         Possible values are: RenderablePointCloud, StarLabels, RenderablePolygonCloud, RenderableStars, RenderableConstellationLines, RenderableDUMeshes, RenderableConstellationBounds')
