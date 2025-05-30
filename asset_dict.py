@@ -7,7 +7,7 @@ master_dictionary = {
         "data": {
             "File": "2df.csv",
             "Name": "2dF Speck Files",
-            "Identifier": "digitalUniverse_2dF_speck",
+            "Identifier": "digitaluniverse_2dF_speck",
             "Version": 3
             },
         "local_modules": True,
@@ -22,7 +22,10 @@ master_dictionary = {
         "FixedColor": "1.0, 1.0, 1.0", # not used
         "Opacity": "1.0",
         "ColorMapping": {
-            "File": "2df.cmap",
+            "Name": "2dF Speck Files",
+            "Identifier": "digitaluniverse_2dF_speck",
+            "Version": 3,
+            "File": "2dF.cmap",
             "Enabled": "true",
             "ParameterOptions": [{"Key": "num_nearby_galaxies", "Range": "1.0, 25.0"},
                                 {"Key": "redshift", "Range": "0.0, 0.075"}]
@@ -51,7 +54,7 @@ master_dictionary = {
         "data": {
             "File": "bd.csv",
             "Name": "Brown Dwarf Speck Files",
-            "Identifier": "digitalUniverse_brown_dwarf_speck",
+            "Identifier": "digitaluniverse_brown_dwarfs_speck",
             "Version": 1
             },
         "Unit": "pc",
@@ -65,6 +68,9 @@ master_dictionary = {
         "FixedColor": "0.4, 0.0, 0.1",
         "Opacity": "1.0",
         "ColorMapping": {
+            "Name": "Brown Dwarf Speck Files",
+            "Identifier": "digitaluniverse_brown_dwarfs_speck",
+            "Version": 1,
             "File": "bd.cmap",
             "Enabled": "true",
             "ParameterOptions": [{"Key": "typeindex", "Range": "1.0, 4.0"}]
@@ -120,11 +126,14 @@ master_dictionary = {
         "FixedColor": "1.0, 1.0, 0.0",
         "Opacity": "1.0",
         "ColorMapping": {
-            "File": "6df.cmap",
+            "File": "6dF.cmap",
             "Enabled": "true",
             "ParameterOptions": [
                 {"Key": "num_nearby_galaxies", "Range": "1.0, 10.0"},
-                {"Key": "redshift", "Range": "0.0, 0.075"}]
+                {"Key": "redshift", "Range": "0.0, 0.075"}],
+            "Name": "6dF Speck Files",
+            "Identifier": "digitaluniverse_6dF_speck",
+            "Version": 3
             },
         "ScaleExponent": "22.5",
         "MaxSize": "0.2",
@@ -166,7 +175,10 @@ master_dictionary = {
         "ColorMapping": {
             "File": "SDSSgals.cmap",
             "Enabled": "true",
-            "ParameterOptions": [{"Key": "num_nearby_galaxies", "Range": "1.0, 25.0"}]
+            "ParameterOptions": [{"Key": "num_nearby_galaxies", "Range": "1.0, 25.0"}],
+            "Name": "Sloan Digital Sky Survey Speck Files",
+            "Identifier": "digitaluniverse_sloandss_speck",
+            "Version": 4
             },
         "ScaleExponent": "22.6",
         "MaxSize": "0.15",
@@ -295,7 +307,10 @@ master_dictionary = {
         "ColorMapping": {
             "File": "expl_candidates.cmap",
             "Enabled": "true",
-            "ParameterOptions": [{"Key": "survey_num", "Range" : "1.0, 3.0"}]
+            "ParameterOptions": [{"Key": "survey_num", "Range" : "1.0, 3.0"}],
+            "Name": "Exoplanets Candidates Speck Files",
+            "Identifier": "digitaluniverse_exoplanets_candidates_speck",
+            "Version": 2
             },
         "ScaleExponent": "17.8",
         "MaxSize": "1.0",
@@ -387,7 +402,7 @@ master_dictionary = {
         "local_modules": True,
         "data": {
             "File": "oc.csv",
-            "Name": "Open Cluster Speck Files",
+            "Name": "Open Clusters Speck Files",
             "Identifier": "digitaluniverse_openclusters_speck",
             "Version": 4
             },
@@ -560,7 +575,10 @@ master_dictionary = {
         "ColorMapping": {
             "File": "ob.cmap",
             "Enabled": "true",
-            "ParameterOptions": [{"Key": "armID", "Range": "1.0, 3.0"}]
+            "ParameterOptions": [{"Key": "armID", "Range": "1.0, 3.0"}],
+            "Name": "OB Associations Speck Files",
+            "Identifier": "digitaluniverse_obassociations_speck",
+            "Version": 4
             },
         "ScaleExponent": "16.9",
         "MaxSize": "17",
@@ -658,14 +676,19 @@ master_dictionary = {
             "Version": 6
             },
         "Texture": {
-            "Glare_File": "halo.png",
-            "Core_File": "glare.png",
+            "Glare": "halo.png",
+            "Core": "glare.png",
             "Name": "Stars Textures",
             "Identifier": "stars_textures",
             "Version": 1
             },
-        "ColorMap": "colorbv.cmap",
-        "OtherDataColorMap": "viridis.cmap",
+        "ColorMap":{
+            "ColorMap": "colorbv.cmap",
+            "OtherDataColorMap": "viridis.cmap",
+            "Name": "Stars Color Table",
+            "Identifier": "stars_colormap",
+            "Version": 3
+            },
         "Identifier": "Stars_test",
         "Bv_column": "colorb_v",
         "Luminance_column": "lum",
@@ -712,6 +735,9 @@ master_dictionary = {
         "FixedColor": "0.85, 0.35, 0.18",
         "Opacity": "0.95",
         "ColorMapping": {
+            "Name": "Quasars Colormap",
+            "Identifier": "digitaluniverse_quasars_colormap",
+            "Version": 1,
             "File": "viridis.cmap",
             "Enabled": "false",
             "ParameterOptions": [{"Key": "lookback_time", "Range": "1.4, 13.0"}]
@@ -915,6 +941,11 @@ master_dictionary = {
         "asset_dir": "star_orbits",
         "local_modules": True,
         "data_folder": "",
+        "data": {
+            "Name": "Star Orbits Speck Files",
+            "Identifier": "digitaluniverse_starorbits_speck",
+            "Version": 2
+            },
         "Unit": "pc",
         "Opacity": "1.0",
         "objects": {"SunOrbit": {

@@ -1,0 +1,87 @@
+-- This file is auto-generated in the make_RenderablePointCloud_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local data_folder = asset.resource({
+  Name = "Sloan Digital Sky Survey Speck Files",
+  Type = "HttpSynchronization",
+  Identifier = "digitaluniverse_sloandss_speck",
+  Version = 4
+})
+local texture_folder = asset.resource({
+  Name = "Point Textures",
+  Type = "HttpSynchronization",
+  Identifier = "digitaluniverse_point_textures",
+  Version = 1
+})
+local cmap_folder = asset.resource({ -- often the same as the data_folder but not always
+  Name = "Sloan Digital Sky Survey Speck Files",
+  Type = "HttpSynchronization",
+  Identifier = "digitaluniverse_sloandss_speck",
+  Version = 4
+})
+local data_file = data_folder .. "sdss.speck"
+local texture = texture_folder .. "point3A.png"
+local cmap = cmap_folder .. "SDSSgals.cmap"
+
+local Object = {
+  Identifier = "SloanDigitalSkySurvey_test",
+  Renderable = {
+    Type = "RenderablePointCloud",
+    File = data_file,
+    Unit = "Mpc",
+    Enabled = true,
+    Coloring = {
+      FixedColor = {0.8, 0.8, 1.0},
+      ColorMapping = {
+        File = cmap,
+        Enabled = true,
+        ParameterOptions = {
+          { Key = "num_nearby_galaxies", Range = {1.0, 25.0} }
+        }
+      }
+    },
+    Opacity = 0.8,
+    Texture = {
+      File = texture },
+    SizeSettings = {
+      ScaleExponent = 22.6,
+      MaxSize = 0.15,
+      EnableMaxSizeControl = true
+     },
+    Fading = {
+      FadeInDistances = {220.0, 650.0}
+    },
+  },
+  GUI = {
+    Name = "Sloan Digital Sky Survey -test",
+    Path = "/Universe/Deep Sky Surveys",
+    Description = [[The Sloan Digital Sky Survey (SDSS) is an ambitious project to image
+            about 35% of the sky, deep into the universe. The SDSS galaxies form triangular
+            wedges, revealing those parts of the sky observed by the telescope. If the entire
+            sky were covered, you would see a spherical distribution of galaxies surrounding
+            the Milky Way. With only 35% of the entire sky observed, we see only a few select
+            slices or larger wedgelike portions from that sphere. The weblike cosmic structure
+            is echoed in these data, with orange clusters standing out among the less dense
+            aqua-colored galaxies and the less dense regions of green-colored galaxies.
+            Census: 2,862,767 galaxies.]]
+  }
+}
+
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "Sloan Digital Sky Survey Galaxies",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH), Eric Gawiser (Rutgers)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

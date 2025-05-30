@@ -59,10 +59,10 @@ def import_OpenSpace_modules(datainfo):
     print('-- Set some parameters for OpenSpace settings')
     try:
         print('local data_folder = asset.resource({')
-        print(f'  Name = "{datainfo["data_folder_Name"]}",')
+        print(f'  Name = "{datainfo["data"]["Name"]}",')
         print( '  Type = "HttpSynchronization",')
-        print(f'  Identifier = "{datainfo["data_folder_Identifier"]}",')
-        print(f'  Version = {datainfo["data_folder_Version"]}')
+        print(f'  Identifier = "{datainfo["data"]["Identifier"]}",')
+        print(f'  Version = {datainfo["data"]["Version"]}')
         print('})')
     except KeyError:
         raise KeyError(f'need to set data_folder_Name, data_folder_Version, and data_folder_Identifier \
@@ -80,21 +80,33 @@ def import_OpenSpace_modules(datainfo):
             raise KeyError(f'need to set Name, Identifier, and Version \
                            in the datainfo["Texture"] dictionary when local_modules = False and texture is provided')
         
+    if datainfo.get("ColorMapping") != None: # if texture is needed its found in this folder
+        try:
+            print('local cmap_folder = asset.resource({ -- often the same as the data_folder but not always')
+            print(f'  Name = "{datainfo["ColorMapping"]["Name"]}",')
+            print( '  Type = "HttpSynchronization",')
+            print(f'  Identifier = "{datainfo["ColorMapping"]["Identifier"]}",')
+            print(f'  Version = {datainfo["ColorMapping"]["Version"]}')
+            print('})')
+        except KeyError:
+            raise KeyError(f'need to set Name, Identifier, and Version \
+                           in the datainfo["ColorMapping"] dictionary when local_modules = False and texture is provided')
+        
     # assign variables for the OpenSpace modules
     try:
         print(f'local data_file = data_folder .. "{datainfo["data"]["File"]}"')
     except KeyError:
         raise KeyError(f'need to set File in the datainfo["data"] dictionary')
 
-    if datainfo.get("texture") != None:
-        print(f'local texture = texture_folder .. "{datainfo["texture"]}"')
+    if datainfo.get("Texture") != None:
+        print(f'local texture = texture_folder .. "{datainfo["Texture"]["File"]}"')
     
     if datainfo.get("ColorMapping") != None:
-        print(f'local cmap = data_folder .. "{datainfo["ColorMapping"]["File"]}"')
+        print(f'local cmap = cmap_folder .. "{datainfo["ColorMapping"]["File"]}"')
 
     if datainfo.get("Labels") != None:
         if datainfo["Labels"].get("File") != None:
-            print(f'local label = data_folder .. "{datainfo["label_file"]}"')
+            print(f'local label = data_folder .. "{datainfo["Labels"]["File"]}"')
     
     if datainfo["data"].get("NamesFile") != None:
         print(f'local names = data_folder .. "{datainfo["data"]["NamesFile"]}"')
@@ -112,14 +124,72 @@ def import_local_star_modules(datainfo):
         print('-- Set some parameters for OpenSpace settings')
         try:
             print(f'local data_file = asset.resource("{datainfo["data"]["File"]}")')
-            print(f'local core_texture = asset.resource("{datainfo["Texture"]["Core_File"]}")')
-            print(f'local glare_texture = asset.resource("{datainfo["Texture"]["Glare_File"]}")')
-            print(f'local cmap = asset.resource("{datainfo["ColorMap"]}")')
-            print(f'local other_cmap = asset.resource("{datainfo["OtherDataColorMap"]}")')
+            print(f'local core_texture = asset.resource("{datainfo["Texture"]["Core"]}")')
+            print(f'local glare_texture = asset.resource("{datainfo["Texture"]["Glare"]}")')
+            print(f'local cmap = asset.resource("{datainfo["ColorMap"]["ColorMap"]}")')
+            print(f'local other_cmap = asset.resource("{datainfo["ColorMap"]["OtherDataColorMap"]}")')
         except KeyError:
-            raise KeyError(f'need to set File in datainfo["data"], Core_File and GlareFile in datainfo["Texture"], and ColorMap and OtherDataColorMap in the datainfo dictionary')
+            raise KeyError(f'need to set File in datainfo["data"], Core and Glare in datainfo["Texture"], and ColorMap and OtherDataColorMap in the datainfo dictionary')
 
         print()
+
+def import_OpenSpace_star_modules(datainfo):
+    # importing local modules locations
+    print('-- Set some parameters for OpenSpace settings')
+    try:
+        print('local data_folder = asset.resource({')
+        print(f'  Name = "{datainfo["data"]["Name"]}",')
+        print( '  Type = "HttpSynchronization",')
+        print(f'  Identifier = "{datainfo["data"]["Identifier"]}",')
+        print(f'  Version = {datainfo["data"]["Version"]}')
+        print('})')
+        print()
+    except KeyError:
+        raise KeyError(f'need to set Name, Version, and Identifier \
+                        in the datainfo["data"] dictionary when local_modules = False')
+
+    try:
+        print('local texture_folder = asset.resource({')
+        print(f'  Name = "{datainfo["Texture"]["Name"]}",')
+        print( '  Type = "HttpSynchronization",')
+        print(f'  Identifier = "{datainfo["Texture"]["Identifier"]}",')
+        print(f'  Version = {datainfo["Texture"]["Version"]}')
+        print('})')
+        print()
+    except KeyError:
+        raise KeyError(f'need to set Name, Identifier, and Version \
+                        in the datainfo["Texture"] dictionary when local_modules = False')
+    
+    try:
+        print('local colormaps_folder = asset.resource({')
+        print(f'  Name = "{datainfo["ColorMap"]["Name"]}",')
+        print( '  Type = "HttpSynchronization",')
+        print(f'  Identifier = "{datainfo["ColorMap"]["Identifier"]}",')
+        print(f'  Version = {datainfo["ColorMap"]["Version"]}')
+        print('})')
+        print()
+    except KeyError:
+        raise KeyError(f'need to set Name, Identifier, and Version \
+                        in the datainfo["ColorMap"] dictionary when local_modules = False')
+        
+    # assign variables for the OpenSpace modules
+    try:
+        print(f'local data_file = data_folder .. "{datainfo["data"]["File"]}"')
+        print(f'local core_texture = texture_folder .. "{datainfo["Texture"]["Core"]}"')
+        print(f'local glare_texture = texture_folder .. "{datainfo["Texture"]["Glare"]}"')
+        print(f'local cmap = colormaps_folder ..  "{datainfo["ColorMap"]["ColorMap"]}"')
+        print(f'local other_cmap =  colormaps_folder .. "{datainfo["ColorMap"]["OtherDataColorMap"]}"')
+    except KeyError:
+        raise KeyError(f'need to set File in datainfo["data"], Core and Glare in datainfo["Texture"], and ColorMap and OtherDataColorMap in the datainfo dictionary')
+
+    
+    print()
+
+def import_star_modules(datainfo):
+    if datainfo["local_modules"] == True:
+        import_local_star_modules(datainfo)
+    else:
+        import_OpenSpace_star_modules(datainfo)
 
 def set_color_parameters(datainfo):
     # if color map is provided 
@@ -684,7 +754,7 @@ def make_RenderableStars_asset(datainfo):
         print("-- This file is auto-generated in the " + make_RenderableStars_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
         
-        import_local_star_modules(datainfo)
+        import_star_modules(datainfo)
 
         # START OF OBJECT 
         print('local Object = {')
@@ -768,7 +838,23 @@ def make_RenderableDUMeshes_asset(datainfo):
         print("-- This file is auto-generated in the " + make_RenderableDUMeshes_asset.__name__ + "() function inside " + Path(__file__).name)
         print()
         
-        print(f'local folder = asset.resource("{datainfo["data_folder"]}")')
+        if datainfo["local_modules"] == True:
+            try:
+                print(f'local folder = asset.resource("{datainfo["data_folder"]}")')
+            except KeyError:
+                raise KeyError(f'need to set data_folder in the datainfo dictionary when local_modules = True')
+        else:
+            try:
+                print('local folder = asset.resource({')
+                print(f'  Name = "{datainfo["data"]["Name"]}",')
+                print( '  Type = "HttpSynchronization",')
+                print(f'  Identifier = "{datainfo["data"]["Identifier"]}",')
+                print(f'  Version = {datainfo["data"]["Version"]}')
+                print('})')
+            except KeyError:
+                raise KeyError(f'need to set data_folder_Name, data_folder_Version, and data_folder_Identifier \
+                                in the datainfo dictionary when local_modules = False')
+
 
         for object in datainfo["objects"].keys():
             

@@ -1,0 +1,70 @@
+-- This file is auto-generated in the make_RenderablePolygonCloud_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local data_folder = asset.resource({
+  Name = "Pulsars Speck Files",
+  Type = "HttpSynchronization",
+  Identifier = "digitaluniverse_pulsars_speck",
+  Version = 3
+})
+local data_file = data_folder .. "pulsars.speck"
+
+local Object = {
+  Identifier = "Pulsars_test",
+  Renderable = {
+    Type = "RenderablePolygonCloud",
+    Enabled = false,
+    File = data_file,
+    Unit = "Kpc",
+    PolygonSides = 4,
+    Coloring = {
+      FixedColor = {0.7, 0.0, 0.0}
+    },
+    Opacity = 1.0,
+    SizeSettings = {
+      ScaleExponent = 18.1,
+      MaxSize = 19.0,
+      EnableMaxSizeControl = true
+     },
+    DataMapping = {
+      Name = "label" },
+    Labels = {
+      Color = { 0.75, 0.21, 0.21 },
+      Size = 15.27,
+      MinMaxSize = { 4, 20 },
+      Unit = "Kpc"
+    }
+  },
+  GUI = {
+    Name = "Pulsars-test",
+    Path = "/Milky Way/Stellar Remnants",
+    Description = [[A pulsar is a spinning neutron star, an ultra-dense stellar remnant
+            resulting from a supernova-driven collapse of the stellar core. Upon death, stars
+            leave behind one of three possible remnants: a white dwarf, a neutron star, or a
+            black hole. Stars that are more massive than the sun will often become neutron
+            stars in a violent explosion called a supernova. Pulsars are not pulsing but are
+            spinning neutron stars whose beams of radiation point toward Earth just as a
+            lighthouse sweeps the horizon. Their strong magnetic fields funnel beams of light
+            from its poles. When these beams point to Earth, we see a strong radio signal.
+            Census: 3,221 pulsars.]]
+  }
+}
+
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "Pulsars",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott, Zack Reeves, Ally Baldelli (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}

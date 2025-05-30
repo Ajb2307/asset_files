@@ -1,0 +1,61 @@
+-- This file is auto-generated in the make_RenderableConstellationBounds_asset() function inside asset_creation.py
+
+-- Set some parameters for OpenSpace settings
+local data_folder = asset.resource({
+  Name = "Constellation Files",
+  Type = "HttpSynchronization",
+  Identifier = "digitaluniverse_constellations_data",
+  Version = 1
+})
+local data_file = data_folder .. "constellation_boundaries.dat"
+local names = data_folder .. "constellations.dat"
+
+local coreKernels = asset.require("spice/core")
+
+local Object = {
+  Identifier = "ConstellationBounds-test",
+  Renderable = {
+    Type = "RenderableConstellationBounds",
+    Enabled = false,
+    File = data_file,
+    NamesFile = names,
+  },
+  Transform = {
+    Rotation = {
+      Type = "SpiceRotation",
+      SourceFrame = coreKernels.Frame.J2000,
+      DestinationFrame = coreKernels.Frame.Galactic
+    },
+    Scale = {
+      Type = "StaticScale",
+      Scale = 10e17
+    }
+  },
+  GUI = {
+    Name = "Constellation Boundaries-test",
+    Path = "/Milky Way/Constellations",
+    Description = [[As a continent is divided into countries, astronomers divide the sky
+            into 88 regions called constellations. Every object falls into one of these 88
+            regions. The boundaries of these regions are shown in this asset. Use these in
+            concert with the constellation labels. Census: 88 constellations.]]
+  }
+}
+
+asset.onInitialize(function()
+    openspace.addSceneGraphNode(Object)
+end)
+
+asset.onDeinitialize(function()
+    openspace.removeSceneGraphNode(Object)
+end)
+
+asset.export(Object)
+
+
+asset.meta = {
+  Name = "Constellation Bounds",
+  Description = Object.GUI.Description,
+  Author = "Brian Abbott and Ally Baldelli (AMNH)",
+  URL = "https://www.amnh.org/research/hayden-planetarium/digital-universe",
+  License = "AMNH Digital Universe"
+}
